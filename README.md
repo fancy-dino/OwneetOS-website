@@ -22,6 +22,9 @@ The Angular CLI's usage statistics are off (`"analytics": false` in `angular.jso
 off. New dependencies are added only at versions published at least two weeks earlier
 (`npm install --before=<date>`), and credited in [CREDITS.md](CREDITS.md) in the same change.
 
+Every pull request and every push to `main` is built and tested by GitHub Actions
+(`.github/workflows/ci.yml`, check **Build**); nothing is published from there.
+
 ## Licence
 
 The code is released under the [GNU General Public License v3.0 or later](LICENSE); the site's

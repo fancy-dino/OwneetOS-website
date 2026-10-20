@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Builds the website and runs its tests on every pull request and on main. Nothing is published.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # The Angular CLI never sends usage statistics (also "analytics": false in angular.json).
+  NG_CLI_ANALYTICS: "false"
+  npm_config_update_notifier: "false"
+  npm_config_fund: "false"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24.21.0"
+      - name: Install the exact dependencies of package-lock.json
+        run: npm ci --no-audit
+      - name: Build the static site
+        run: npx ng build
+      - name: Run the unit tests
+        run: npx ng test --watch=false
