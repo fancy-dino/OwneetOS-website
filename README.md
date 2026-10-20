@@ -29,10 +29,9 @@ Every pull request and every push to `main` is built and tested by GitHub Action
 
 ```text
 src/i18n/                     the texts, one JSON file per language (en.json, it.json)
+src/app/core/components/      the site's components (header, home, console-screen, feature-carousel)
 src/app/core/services/        app-wide services (i18n, sections, notice)
 src/app/shared/components/    components used in several places (icon, wordmark)
-src/app/components/           the site's frame (header)
-src/app/pages/<page>/         a page, its own components under components/
 ```
 
 One folder per component or service; file names carry their type (`header.component.ts`,

@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { Component, DOCUMENT, DestroyRef, ElementRef, afterNextRender, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Lang } from '../../core/services/i18n/i18n.model';
-import { I18nService } from '../../core/services/i18n/i18n.service';
-import { NoticeService } from '../../core/services/notice/notice.service';
-import { SectionsService } from '../../core/services/sections/sections.service';
-import { IconComponent } from '../../shared/components/icon/icon.component';
-import { WordmarkComponent } from '../../shared/components/wordmark/wordmark.component';
-import { ConsoleScreenComponent } from './components/console-screen/console-screen.component';
-import { FeatureCarouselComponent } from './components/feature-carousel/feature-carousel.component';
+import { Lang } from '../../services/i18n/i18n.model';
+import { I18nService } from '../../services/i18n/i18n.service';
+import { NoticeService } from '../../services/notice/notice.service';
+import { SectionsService } from '../../services/sections/sections.service';
+import { IconComponent } from '../../../shared/components/icon/icon.component';
+import { WordmarkComponent } from '../../../shared/components/wordmark/wordmark.component';
+import { ConsoleScreenComponent } from '../console-screen/console-screen.component';
+import { FeatureCarouselComponent } from '../feature-carousel/feature-carousel.component';
 import { Fact, Requirement, SectionLink } from './home.model';
 
 /**

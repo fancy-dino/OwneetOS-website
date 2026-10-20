@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, DOCUMENT, DestroyRef, ElementRef, afterNextRender, inject, signal, viewChild } from '@angular/core';
-import { I18nService } from '../../../../core/services/i18n/i18n.service';
-import { IconComponent } from '../../../../shared/components/icon/icon.component';
+import { I18nService } from '../../services/i18n/i18n.service';
+import { IconComponent } from '../../../shared/components/icon/icon.component';
 import { Feature } from './feature-carousel.model';
 
 /** Every AUTOPLAY ms the next feature comes in by itself. */

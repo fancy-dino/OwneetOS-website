@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { I18nService } from '../../core/services/i18n/i18n.service';
-import { NoticeService } from '../../core/services/notice/notice.service';
-import { SectionsService } from '../../core/services/sections/sections.service';
-import { IconComponent } from '../../shared/components/icon/icon.component';
-import { WordmarkComponent } from '../../shared/components/wordmark/wordmark.component';
+import { I18nService } from '../../services/i18n/i18n.service';
+import { NoticeService } from '../../services/notice/notice.service';
+import { SectionsService } from '../../services/sections/sections.service';
+import { IconComponent } from '../../../shared/components/icon/icon.component';
+import { WordmarkComponent } from '../../../shared/components/wordmark/wordmark.component';
 import { HeaderLink } from './header.model';
 
 /** The site's header: logo, the home's sections, language, "Get OwneetOS"; a Menu button below 1100 px. */

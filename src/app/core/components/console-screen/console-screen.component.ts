@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { Component, inject } from '@angular/core';
-import { I18nService } from '../../../../core/services/i18n/i18n.service';
-import { IconComponent } from '../../../../shared/components/icon/icon.component';
-import { WordmarkComponent } from '../../../../shared/components/wordmark/wordmark.component';
+import { I18nService } from '../../services/i18n/i18n.service';
+import { IconComponent } from '../../../shared/components/icon/icon.component';
+import { WordmarkComponent } from '../../../shared/components/wordmark/wordmark.component';
 import { ConsoleApp, ConsoleGame } from './console-screen.model';
 
 /**
