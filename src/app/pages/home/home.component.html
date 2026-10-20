@@ -1,0 +1,89 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<nav class="dots" [attr.aria-label]="i18n.t('nav.sections')">
+  @for (section of sectionLinks; track section.id) {
+    <a [routerLink]="home()" [fragment]="section.id" [attr.aria-label]="i18n.t(section.label)" [attr.title]="i18n.t(section.label)"
+      [attr.aria-current]="sections.current() === section.id ? 'true' : null"></a>
+  }
+</nav>
+
+<section class="snap" id="home">
+  <div class="wrap hero">
+    <div class="text">
+      <p class="kicker">{{ i18n.t('hero.kicker') }}</p>
+      <h1 class="disp">{{ i18n.t('hero.title') }}</h1>
+      <p class="lede">{{ i18n.t('hero.lede') }}</p>
+      <div class="ctas">
+        <a class="btn primary" [routerLink]="home()" fragment="download">{{ i18n.t('hero.download') }}</a>
+        <a class="btn ghost" [routerLink]="home()" fragment="features">{{ i18n.t('hero.features') }}</a>
+      </div>
+    </div>
+    <app-console-screen />
+  </div>
+</section>
+
+<section class="snap" id="features">
+  <div class="wrap">
+    <div class="head"><h2 class="disp">{{ i18n.t('features.title') }}</h2><p>{{ i18n.t('features.lede') }}</p></div>
+    <app-feature-carousel />
+  </div>
+</section>
+
+<section class="snap" id="requirements">
+  <div class="wrap">
+    <div class="head"><h2 class="disp">{{ i18n.t('requirements.title') }}</h2><p>{{ i18n.t('requirements.lede') }}</p></div>
+    <div class="figures">
+      @for (item of requirements; track item.label) {
+        <div class="figure"><b>{{ item.value }}</b><span>{{ i18n.t(item.label) }}</span></div>
+      }
+    </div>
+    <p class="more"><a href="#guide" (click)="soon($event)">{{ i18n.t('requirements.more') }}</a></p>
+  </div>
+</section>
+
+<section class="snap" id="open">
+  <div class="wrap">
+    <div class="head"><h2 class="disp">{{ i18n.t('open.title') }}</h2><p>{{ i18n.t('open.lede') }}</p></div>
+    <div class="facts">
+      @for (fact of facts; track fact.label) {
+        <div class="fact"><span class="icon"><app-icon [name]="fact.icon" /></span><b>{{ i18n.t(fact.label) }}</b></div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="snap" id="info">
+  <div class="wrap">
+    <div class="head"><h2 class="disp">{{ i18n.t('info.title') }}</h2><p>{{ i18n.t('info.lede') }}</p></div>
+    <div class="infos">
+      <a class="info" href="#guide" (click)="soon($event)">
+        <span class="icon"><app-icon name="book-open" /></span><b>{{ i18n.t('info.guide') }}</b><span>{{ i18n.t('info.guide.text') }}</span>
+      </a>
+      <a class="info" href="#faq" (click)="soon($event)">
+        <span class="icon"><app-icon name="circle-help" /></span><b>{{ i18n.t('info.faq') }}</b><span>{{ i18n.t('info.faq.text') }}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="snap last" id="download">
+  <div class="wrap">
+    <div class="box">
+      <h2 class="disp">{{ i18n.t('download.title') }}</h2>
+      <p>{{ i18n.t('download.text') }}</p>
+      <a class="btn primary" href="#download" aria-disabled="true" (click)="soon($event, 'download.soon')">{{ i18n.t('download.button') }}</a>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <app-wordmark />
+      <a href="#guide" (click)="soon($event)">{{ i18n.t('info.guide') }}</a>
+      <a href="#faq" (click)="soon($event)">{{ i18n.t('info.faq') }}</a>
+      <a href="#contribute" (click)="soon($event)">{{ i18n.t('footer.contribute') }}</a>
+      <a [href]="sourceUrl">{{ i18n.t('footer.source') }}</a>
+      <a href="#credits" (click)="soon($event)">{{ i18n.t('footer.credits') }}</a>
+      <a href="#privacy" (click)="soon($event)">{{ i18n.t('footer.privacy') }}</a>
+      <span>{{ i18n.t('footer.licence') }}</span>
+      <span class="marks">{{ i18n.t('footer.trademarks') }}</span>
+    </div>
+  </footer>
+</section>

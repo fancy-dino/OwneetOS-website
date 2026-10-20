@@ -1,0 +1,37 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<ng-template #card let-feature>
+  <div class="icon"><app-icon [name]="feature.icon" /></div>
+  <h3>{{ i18n.t('feature.' + feature.key + '.title') }}</h3>
+  <p>{{ i18n.t('feature.' + feature.key + '.text') }}</p>
+</ng-template>
+
+<div class="track" #track tabindex="0" role="region" aria-roledescription="carousel" [attr.aria-label]="i18n.t('nav.features')"
+  (scroll)="scrolled()" (scrollend)="settle()" (keydown.arrowleft)="step(-1, $event)" (keydown.arrowright)="step(1, $event)">
+  <div class="slide" aria-hidden="true">
+    <ng-container *ngTemplateOutlet="card; context: { $implicit: features[features.length - 1] }" />
+  </div>
+  @for (feature of features; track feature.key; let i = $index) {
+    <div class="slide" role="group" aria-roledescription="slide" [attr.aria-current]="current() === i"
+      [attr.aria-label]="i18n.t('features.card', { n: i + 1, total: features.length })">
+      <ng-container *ngTemplateOutlet="card; context: { $implicit: feature }" />
+    </div>
+  }
+  <div class="slide" aria-hidden="true">
+    <ng-container *ngTemplateOutlet="card; context: { $implicit: features[0] }" />
+  </div>
+</div>
+
+<div class="controls">
+  <button class="arrow" type="button" (click)="step(-1)" [attr.aria-label]="i18n.t('features.previous')">
+    <app-icon name="chevron-left" />
+  </button>
+  <div class="dots">
+    @for (feature of features; track feature.key; let i = $index) {
+      <button type="button" (click)="go(i)" [attr.aria-current]="current() === i"
+        [attr.aria-label]="i18n.t('features.card', { n: i + 1, total: features.length })"></button>
+    }
+  </div>
+  <button class="arrow" type="button" (click)="step(1)" [attr.aria-label]="i18n.t('features.next')">
+    <app-icon name="chevron-right" />
+  </button>
+</div>

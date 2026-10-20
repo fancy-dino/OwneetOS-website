@@ -1,0 +1,9 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// The notice: hidden below the screen, it rises for a moment.
+.notice {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 160%); visibility: hidden; opacity: 0; z-index: 40;
+  background: var(--raised); color: var(--fg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 18px;
+  font-size: 14px; max-width: calc(100% - 32px); transition: transform .25s ease, opacity .25s ease, visibility .25s;
+  &.on { transform: translate(-50%, 0); visibility: visible; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .notice { transition: none; } }

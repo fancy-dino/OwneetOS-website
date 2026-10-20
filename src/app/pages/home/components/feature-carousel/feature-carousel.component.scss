@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// The strip spans the whole screen; at rest only the middle card is on screen (the next one is
+// half a screen away), and while they slide the cards come in and go out at the screen's edges.
+:host { display: block; margin: 0 calc(50% - 50vw); --card: min(600px, 84vw); }
+.track {
+  position: relative; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none; padding: 8px calc(50vw - var(--card) / 2); gap: calc(50vw - var(--card) / 2);
+  &::-webkit-scrollbar { display: none; }
+}
+.slide {
+  flex: 0 0 var(--card); scroll-snap-align: center; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 28px; padding: 44px 40px; display: grid; justify-items: center; text-align: center; gap: 14px;
+}
+.icon {
+  width: 84px; height: 84px; border-radius: 24px; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent);
+  app-icon { width: 44px; height: 44px; }
+}
+h3 { font-family: var(--display); font-weight: 800; font-size: 30px; margin: 6px 0 0; letter-spacing: -0.01em; }
+p { margin: 0; color: var(--muted); font-size: 17px; max-width: 24em; }
+.controls { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 22px; }
+.arrow {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface);
+  cursor: pointer; display: grid; place-items: center;
+  app-icon { width: 20px; height: 20px; }
+}
+.dots {
+  display: flex; gap: 8px;
+  button { width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; background: var(--line); cursor: pointer; }
+  button[aria-current='true'] { background: var(--accent); width: 24px; border-radius: 999px; }
+}
+@media (max-width: 600px) { .slide { padding: 32px 22px; } }
+@media (prefers-reduced-motion: reduce) { .track { scroll-behavior: auto; } }

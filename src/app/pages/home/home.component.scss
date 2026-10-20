@@ -1,0 +1,84 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Each section fills the screen and the page's scrolling snaps to it (html in styles.scss).
+.snap {
+  min-height: 100svh; scroll-snap-align: start; padding: calc(var(--head) + 32px) 0 48px;
+  display: flex; align-items: center;
+  > .wrap { display: grid; gap: 36px; > * { min-width: 0; } }
+}
+.head {
+  text-align: center; display: grid; gap: 12px; justify-items: center;
+  h2 { font-size: clamp(34px, 5vw, 56px); margin: 0; }
+  p { color: var(--muted); font-size: 18px; margin: 0; max-width: 30em; }
+}
+.icon {
+  width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent);
+  app-icon { width: 30px; height: 30px; }
+}
+
+// Where we are: one dot per section, on the right
+.dots {
+  position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 15; display: grid; gap: 12px;
+  a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: transform .2s ease, background .2s ease; }
+  a[aria-current='true'] { background: var(--accent); transform: scale(1.35); }
+}
+
+.hero {
+  grid-template-columns: 1fr 1.25fr; align-items: center;
+  .kicker { color: var(--accent); font-weight: 500; font-size: 15px; margin: 0 0 14px; }
+  h1 { font-size: clamp(42px, 6vw, 70px); margin: 0 0 18px; }
+  .lede { font-size: 19px; color: var(--muted); margin: 0 0 28px; max-width: 26em; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+}
+
+.figures { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.figure {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 28px 16px;
+  text-align: center; display: grid; gap: 6px;
+  b { font-family: var(--display); font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); line-height: 1; }
+  span { color: var(--muted); font-size: 14px; }
+}
+.more { text-align: center; margin: 0; a { color: var(--accent); } }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.fact { display: grid; justify-items: center; text-align: center; gap: 12px; padding: 12px; b { font-weight: 500; font-size: 17px; } }
+
+.infos { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); gap: 20px; justify-content: center; }
+.info {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 32px 24px; text-decoration: none;
+  display: grid; justify-items: center; text-align: center; gap: 10px; transition: transform .15s ease, border-color .15s ease;
+  &:hover { transform: translateY(-2px); border-color: var(--accent); }
+  b { font-family: var(--display); font-weight: 800; font-size: 24px; }
+  span:last-child { color: var(--muted); font-size: 15.5px; }
+}
+
+.last {
+  flex-direction: column; justify-content: space-between; padding-bottom: 0;
+  .box {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, var(--surface)), var(--surface));
+    border: 1px solid var(--line); border-radius: 28px; padding: 64px 24px; text-align: center;
+    display: grid; gap: 14px; justify-items: center; margin: auto 0;
+    h2 { font-size: clamp(36px, 5vw, 60px); margin: 0; }
+    p { color: var(--muted); margin: 0 0 12px; font-size: 18px; max-width: 28em; }
+  }
+}
+footer {
+  width: 100%; border-top: 1px solid var(--line); padding: 22px 0 26px; font-size: 13.5px; color: var(--muted);
+  .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
+  app-wordmark { height: 22px; }
+  a { text-decoration: none; &:hover { color: var(--fg); text-decoration: underline; } }
+  .marks { flex-basis: 100%; font-size: 12.5px; }
+}
+
+@media (max-width: 960px) {
+  .dots { display: none; }
+  .hero { grid-template-columns: 1fr; gap: 28px; text-align: center; .lede { margin-inline: auto; } .ctas { justify-content: center; } }
+  .figures { grid-template-columns: repeat(3, 1fr); }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .infos { grid-template-columns: minmax(0, 420px); }
+}
+@media (max-width: 600px) {
+  .snap { padding-top: calc(var(--head) + 20px); }
+  .figures { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .info, .dots a { transition: none; } }

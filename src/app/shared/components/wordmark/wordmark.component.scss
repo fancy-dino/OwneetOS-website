@@ -1,0 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+:host { display: inline-flex; height: 30px; }
+svg { height: 100%; width: auto; display: block; }
+path { fill: var(--fg); }
+path.accent { fill: var(--accent); }

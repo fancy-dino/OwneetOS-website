@@ -25,6 +25,20 @@ off. New dependencies are added only at versions published at least two weeks ea
 Every pull request and every push to `main` is built and tested by GitHub Actions
 (`.github/workflows/ci.yml`, check **Build**); nothing is published from there.
 
+## Structure
+
+```text
+src/i18n/                     the texts, one JSON file per language (en.json, it.json)
+src/app/core/services/        app-wide services (i18n, sections, notice)
+src/app/shared/components/    components used in several places (icon, wordmark)
+src/app/components/           the site's frame (header)
+src/app/pages/<page>/         a page, its own components under components/
+```
+
+One folder per component or service; file names carry their type (`header.component.ts`,
+`i18n.service.ts`, as `ng generate` creates them here); interfaces and types in
+`<name>.model.ts`, enums in `<name>.enum.ts`, next to the component.
+
 ## Licence
 
 The code is released under the [GNU General Public License v3.0 or later](LICENSE); the site's

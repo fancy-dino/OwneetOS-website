@@ -1,0 +1,40 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<div class="screen">
+  <div class="top">
+    <app-wordmark />
+    <div class="tabs">
+      <span class="pill">LB</span><b>{{ i18n.t('tv.home') }}</b><i>{{ i18n.t('tv.library') }}</i>
+      <i>{{ i18n.t('tv.settings') }}</i><span class="pill">RB</span>
+    </div>
+    <div class="status"><app-icon name="gamepad-2" /><span>78%</span><app-icon name="wifi" /><span>21:40</span></div>
+  </div>
+  <div class="main">
+    <div class="card">
+      <span class="kicker">{{ i18n.t('tv.continue') }}</span>
+      <span class="title">Star Drift</span>
+      <span class="meta"><span>Steam</span><span>{{ i18n.t('tv.yesterday') }}</span><span>12 h 40 min</span></span>
+      <span class="acts"><span>{{ i18n.t('tv.play') }}</span><span>{{ i18n.t('tv.details') }}</span></span>
+    </div>
+    <div class="side">
+      <span class="label">{{ i18n.t('tv.apps') }}</span>
+      <div class="apps">
+        @for (app of apps; track app.label) {
+          <div class="app"><span class="ico"><app-icon [name]="app.icon" /></span><span>{{ i18n.t(app.label) }}</span></div>
+        }
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="rowhead"><b>{{ i18n.t('tv.jump') }}</b><span>{{ i18n.t('tv.together') }}</span></div>
+    <div class="row">
+      @for (game of games; track game.name) {
+        <div class="cover" [style.--h]="game.hue">{{ game.name }}</div>
+      }
+    </div>
+  </div>
+  <div class="prompts">
+    <span><span><i>A</i>{{ i18n.t('tv.select') }}</span><span><i>X</i>{{ i18n.t('tv.options') }}</span></span>
+    <span><span><i>B</i>{{ i18n.t('tv.menu') }}</span></span>
+  </div>
+</div>
+<div class="stand"></div>

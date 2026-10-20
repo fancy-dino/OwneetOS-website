@@ -1,0 +1,4 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<app-header />
+<main><router-outlet /></main>
+<div class="notice" role="status" [class.on]="notice.text()">{{ notice.text() }}</div>

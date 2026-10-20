@@ -1,0 +1,63 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+:host { display: block; container-type: inline-size; }
+.screen {
+  aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: var(--bg);
+  border: 10px solid var(--bezel); box-shadow: 0 30px 80px -30px rgb(0 0 0 / 60%), 0 0 0 1px var(--line);
+  font-size: 1.32cqw; padding: 2.2em 2.8em 1.6em; display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: 1.3em;
+}
+.stand { width: 26%; height: 14px; margin: 0 auto; background: var(--bezel); border-radius: 0 0 10px 10px; }
+app-icon { width: 1.3em; height: 1.3em; }
+.top {
+  display: flex; align-items: center; gap: 2.2em;
+  app-wordmark { height: 1.7em; }
+}
+.tabs {
+  display: flex; align-items: center; gap: .5em; color: var(--muted);
+  b { background: var(--fg); color: var(--bg); font-weight: 500; border-radius: 999px; padding: .3em 1.1em; }
+  i { font-style: normal; padding: .3em .8em; }
+}
+.pill { font-size: .7em; font-weight: 600; border: .14em solid var(--muted); border-radius: .5em; padding: .05em .45em; }
+.status { margin-left: auto; display: flex; gap: 1.2em; align-items: center; color: var(--muted); }
+.main { display: grid; grid-template-columns: 1.65fr 1fr; gap: 1.3em; min-height: 0; }
+.card {
+  position: relative; border-radius: 1.1em; overflow: hidden; padding: 1.5em 1.8em; color: #fff;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: .55em; outline: .22em solid var(--accent); outline-offset: .22em;
+  background: radial-gradient(70% 90% at 85% 15%, hsl(330 85% 62% / 85%), transparent 60%),
+    radial-gradient(60% 80% at 60% 110%, hsl(10 70% 42%), transparent 70%), linear-gradient(135deg, hsl(330 45% 22%), hsl(0 55% 10%));
+  &::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(0 0 0 / 55%), transparent 70%); }
+  > * { position: relative; }
+  .kicker { font-size: .75em; letter-spacing: .12em; text-transform: uppercase; opacity: .85; font-weight: 500; }
+  .title { font-family: var(--display); font-weight: 800; font-size: 2.3em; line-height: 1; }
+  .meta { display: flex; gap: 1em; font-size: .8em; opacity: .9; }
+  .meta span:first-child { background: rgb(0 0 0 / 35%); border-radius: 999px; padding: .1em .7em; }
+  .acts { display: flex; gap: .8em; margin-top: .3em; }
+  .acts span { border-radius: 999px; padding: .45em 1.4em; font-weight: 500; background: rgb(255 255 255 / 16%); }
+  .acts span:first-child { background: #fff; color: #10131c; }
+}
+.side { display: grid; grid-template-rows: auto 1fr; gap: .7em; min-height: 0; }
+.label { font-size: .75em; color: var(--muted); }
+.apps { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: .7em; }
+.app {
+  border-radius: .9em; background: var(--surface); border: .08em solid var(--line); padding: .6em .7em;
+  display: flex; flex-direction: column; justify-content: space-between; gap: .4em; font-size: .78em; line-height: 1.15;
+}
+.ico { width: 2.1em; height: 2.1em; border-radius: .6em; display: grid; place-items: center; background: var(--raised); color: var(--accent); }
+.rowhead {
+  display: flex; justify-content: space-between; font-size: .75em; color: var(--muted); margin-bottom: .6em;
+  b { color: var(--fg); font-weight: 400; }
+}
+.row { display: grid; grid-template-columns: repeat(7, 1fr); gap: .8em; }
+.cover {
+  aspect-ratio: 4 / 5; border-radius: .8em; color: #fff; display: flex; align-items: flex-end; padding: .5em; font-size: .72em; font-weight: 500;
+  background: radial-gradient(120% 80% at 80% 10%, hsl(var(--h) 85% 62% / 95%), transparent 60%),
+    radial-gradient(90% 70% at 0% 100%, hsl(calc(var(--h) + 40) 70% 35%), transparent 70%), hsl(var(--h) 40% 18%);
+}
+.prompts {
+  display: flex; justify-content: space-between; color: var(--muted); font-size: .75em;
+  > span { display: flex; gap: 1.4em; }
+  i {
+    font-style: normal; display: inline-grid; place-items: center; min-width: 1.5em; height: 1.5em; border-radius: 50%;
+    border: .12em solid var(--muted); font-size: .8em; font-weight: 600; margin-right: .4em;
+  }
+}
+@media (max-width: 600px) { .screen { border-width: 6px; } }

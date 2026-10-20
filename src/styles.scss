@@ -1,2 +1,52 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Global styles of the website.
+// Global styles of the website: the console's design tokens (palettes Dusk when the visitor's
+// device is dark, Daylight when it is light), its fonts, served by the site itself, and the base.
+
+@font-face { font-family: 'Bricolage Grotesque'; font-weight: 800; font-display: swap; src: url('/fonts/BricolageGrotesque-ExtraBold.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-weight: 400; font-display: swap; src: url('/fonts/Lexend-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-weight: 500; font-display: swap; src: url('/fonts/Lexend-Medium.ttf') format('truetype'); }
+
+:root {
+  // Dusk
+  --bg: #0e1424; --surface: #172036; --raised: #222d4a; --line: #2e3a5c; --fg: #eef1f8;
+  --muted: #8f9ab5; --accent: #ff8a5b; --on-accent: #1e0e06;
+  --bezel: #05070c;   // the frame of the TV in the console picture
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --text: 'Lexend', system-ui, sans-serif;
+  --wrap: 1160px;
+  --head: 68px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    // Daylight
+    --bg: #eef0f5; --surface: #fff; --raised: #e2e6ef; --line: #c9cfdc; --fg: #121826;
+    --muted: #5a6378; --accent: #2f5bea; --on-accent: #fff;
+    color-scheme: light;
+  }
+}
+
+* { box-sizing: border-box; }
+// One section per screen: the page's scrolling snaps to them
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--text); font-weight: 400; line-height: 1.5; overflow-x: clip; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; width: 100%; }
+.disp { font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; border: 1px solid transparent; cursor: pointer;
+  border-radius: 999px; padding: 12px 24px; font-size: 16px; font-weight: 500; transition: transform .15s ease;
+  background: none; white-space: nowrap;
+  &:hover { transform: translateY(-1px); }
+  &.primary { background: var(--accent); color: var(--on-accent); }
+  &.ghost { border-color: var(--line); color: var(--fg); }
+  &.small { padding: 8px 16px; font-size: 14px; }
+  &[aria-disabled='true'] { cursor: default; }
+}
+
+@media (max-width: 600px) { .wrap { padding: 0 16px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }

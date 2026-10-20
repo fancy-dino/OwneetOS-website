@@ -1,0 +1,33 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<header class="site">
+  <nav class="wrap nav" [attr.aria-label]="i18n.t('nav.main')">
+    <a class="logo" [routerLink]="home()" fragment="home" aria-label="OwneetOS"><app-wordmark /></a>
+
+    <ul id="menu" [class.open]="menuOpen()">
+      @for (link of links; track link.id) {
+        <li>
+          @if (link.soon) {
+            <a [href]="'#' + link.id" (click)="soon($event)">{{ i18n.t(link.label) }}</a>
+          } @else {
+            <a [routerLink]="home()" [fragment]="link.id" (click)="menuOpen.set(false)"
+              [attr.aria-current]="sections.current() === link.id ? 'true' : null">{{ i18n.t(link.label) }}</a>
+          }
+        </li>
+      }
+    </ul>
+
+    <div class="end">
+      <div class="lang" role="group" [attr.aria-label]="i18n.t('nav.language')">
+        @for (lang of i18n.languages; track lang) {
+          <a [routerLink]="i18n.path(lang)" [fragment]="sections.current()" [attr.hreflang]="lang"
+            [attr.aria-current]="i18n.lang() === lang ? 'true' : null">{{ lang.toUpperCase() }}</a>
+        }
+      </div>
+      <a class="btn primary small get" [routerLink]="home()" fragment="download">{{ i18n.t('nav.get') }}</a>
+      <button class="menu-btn" type="button" aria-controls="menu" [attr.aria-expanded]="menuOpen()"
+        (click)="menuOpen.set(!menuOpen())">
+        <app-icon [name]="menuOpen() ? 'x' : 'menu'" />{{ i18n.t('nav.menu') }}
+      </button>
+    </div>
+  </nav>
+</header>
