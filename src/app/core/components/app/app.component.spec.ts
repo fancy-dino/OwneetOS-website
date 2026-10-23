@@ -30,6 +30,27 @@ describe('AppComponent', () => {
     expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Trasforma il tuo PC in una console.');
     expect(document.documentElement.lang).toBe('it');
   });
+
+  it('shows every page in both languages, with its title', async () => {
+    const harness = await RouterTestingHarness.create();
+    for (const [url, heading] of [['/guide', 'Install OwneetOS'], ['/it/faq', 'Domande'], ['/privacy', 'Privacy'],
+      ['/it/contribute', 'Fallo con noi']]) {
+      await harness.navigateByUrl(url);
+      expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(heading);
+    }
+    expect(document.title).toBe('Fallo con noi — OwneetOS');
+  });
+
+  it('opens the credits with the two authors', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/it/credits');
+    const authors = [...(harness.routeNativeElement?.querySelectorAll('.authors b') ?? [])].map((b) => b.textContent);
+    expect(authors).toEqual(['Marco De Franco', 'Daniele De Padova']);
+  });
+
+  it('keeps the slogan in English in every language', () => {
+    expect(italian['hero.kicker']).toBe(english['hero.kicker']);
+  });
 });
 
 describe('Translations', () => {

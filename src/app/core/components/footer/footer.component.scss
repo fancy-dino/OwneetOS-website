@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+:host { display: block; width: 100%; }
+footer { border-top: 1px solid var(--line); padding: 22px 0 26px; font-size: 13.5px; color: var(--muted); }
+.wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
+app-wordmark { height: 22px; }
+a { text-decoration: none; &:hover { color: var(--fg); text-decoration: underline; } }
+.marks { flex-basis: 100%; font-size: 12.5px; }

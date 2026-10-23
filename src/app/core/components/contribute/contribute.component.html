@@ -1,0 +1,13 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<app-page page="contribute">
+  <div class="cards">
+    @for (way of ways; track way.key) {
+      <div>
+        <span class="icon"><app-icon [name]="way.icon" /></span>
+        <h3>{{ i18n.t('contribute.' + way.key + '.title') }}</h3>
+        <p>{{ i18n.t('contribute.' + way.key + '.text') }}</p>
+        <a [href]="way.url">{{ i18n.t('contribute.' + way.key + '.link') }}</a>
+      </div>
+    }
+  </div>
+</app-page>

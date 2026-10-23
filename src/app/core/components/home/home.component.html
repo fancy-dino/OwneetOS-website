@@ -36,7 +36,7 @@
         <div class="figure"><b>{{ item.value }}</b><span>{{ i18n.t(item.label) }}</span></div>
       }
     </div>
-    <p class="more"><a href="#guide" (click)="soon($event)">{{ i18n.t('requirements.more') }}</a></p>
+    <p class="more"><a [routerLink]="i18n.pagePath('guide')">{{ i18n.t('requirements.more') }}</a></p>
   </div>
 </section>
 
@@ -55,10 +55,10 @@
   <div class="wrap">
     <div class="head"><h2 class="disp">{{ i18n.t('info.title') }}</h2><p>{{ i18n.t('info.lede') }}</p></div>
     <div class="infos">
-      <a class="info" href="#guide" (click)="soon($event)">
+      <a class="info" [routerLink]="i18n.pagePath('guide')">
         <span class="icon"><app-icon name="book-open" /></span><b>{{ i18n.t('info.guide') }}</b><span>{{ i18n.t('info.guide.text') }}</span>
       </a>
-      <a class="info" href="#faq" (click)="soon($event)">
+      <a class="info" [routerLink]="i18n.pagePath('faq')">
         <span class="icon"><app-icon name="circle-help" /></span><b>{{ i18n.t('info.faq') }}</b><span>{{ i18n.t('info.faq.text') }}</span>
       </a>
     </div>
@@ -69,20 +69,8 @@
   <div class="wrap">
     <div class="box">
       <h2 class="disp">{{ i18n.t('download.title') }}</h2>
-      <a class="btn primary" href="#download" aria-disabled="true" (click)="soon($event, 'download.soon')">{{ i18n.t('download.button') }}</a>
+      <a class="btn primary" href="#download" aria-disabled="true" (click)="soon($event)">{{ i18n.t('download.button') }}</a>
     </div>
   </div>
-  <footer>
-    <div class="wrap">
-      <app-wordmark />
-      <a href="#guide" (click)="soon($event)">{{ i18n.t('info.guide') }}</a>
-      <a href="#faq" (click)="soon($event)">{{ i18n.t('info.faq') }}</a>
-      <a href="#contribute" (click)="soon($event)">{{ i18n.t('footer.contribute') }}</a>
-      <a [href]="sourceUrl">{{ i18n.t('footer.source') }}</a>
-      <a href="#credits" (click)="soon($event)">{{ i18n.t('footer.credits') }}</a>
-      <a href="#privacy" (click)="soon($event)">{{ i18n.t('footer.privacy') }}</a>
-      <span>{{ i18n.t('footer.licence') }}</span>
-      <span class="marks">{{ i18n.t('footer.trademarks') }}</span>
-    </div>
-  </footer>
+  <app-footer />
 </section>

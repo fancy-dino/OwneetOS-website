@@ -1,0 +1,9 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<div class="in">
+  <app-wordmark class="logo" />
+  <p class="words">
+    @for (word of words(); track $index) {
+      <span>{{ word }}</span>
+    }
+  </p>
+</div>

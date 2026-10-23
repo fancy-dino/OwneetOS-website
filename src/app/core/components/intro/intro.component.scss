@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// The times of the start-up animation (owner, 2026-10-24): the logo's fade, the gap between the
+// words, the wait after the last one, the fade away.
+$fade: 2s;
+$beat: .5s;
+$hold: .8s;
+$out: .4s;
+
+:host {
+  position: fixed; inset: 0; z-index: 100; background: var(--bg); display: grid; place-items: center;
+  animation: intro-away $out ease ($fade + 2 * $beat + $hold) forwards;
+}
+.in { --w: min(76vw, 720px); display: grid; justify-items: center; }
+// sizes follow the logo's width, as in the logo demo (the logo 900 of a 1600-wide screen)
+// the logo's height from its viewBox (3968.9 x 975), its width then follows
+.logo { height: calc(var(--w) * 975 / 3968.9); opacity: 0; animation: intro-in $fade cubic-bezier(.33, 1, .68, 1) forwards; }
+.words {
+  display: flex; gap: .3em; margin: calc(var(--w) * .01) 0 0; font-size: calc(var(--w) * .044); color: var(--muted);
+  // laid out at once and hidden: each word appears in its place, the line never moves
+  span { visibility: hidden; animation: intro-word 0s steps(1) forwards; }
+  span:nth-child(1) { animation-delay: $fade; }
+  span:nth-child(2) { animation-delay: $fade + $beat; }
+  span:nth-child(3) { animation-delay: $fade + 2 * $beat; }
+}
+@keyframes intro-in { to { opacity: 1; } }
+@keyframes intro-word { to { visibility: visible; } }
+@keyframes intro-away { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { :host { display: none; } }

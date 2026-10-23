@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+import { Page } from '../../services/sections/sections.model';
 
-/** A link of the header: a section of the home, or a page that is not there yet (`soon`). */
+/** A link of the header: a section of the home (`section`, the address's #fragment) or a page. */
 export interface HeaderLink {
-  /** The section's id (the address's #fragment). */
-  readonly id: string;
   /** The key of its text. */
   readonly label: string;
-  readonly soon?: boolean;
+  readonly section?: string;
+  readonly page?: Page;
 }

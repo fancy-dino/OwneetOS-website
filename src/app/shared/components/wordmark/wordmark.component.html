@@ -1,6 +1,7 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <svg [attr.viewBox]="viewBox" role="img" aria-label="OwneetOS">
   @for (path of paths; track $index) {
-    <path [attr.d]="path.d" [class.accent]="path.accent" />
+    <path [attr.d]="path.d" [class.accent]="path.accent" [attr.transform]="path.transform"
+      [attr.fill-rule]="path.evenodd ? 'evenodd' : null" />
   }
 </svg>

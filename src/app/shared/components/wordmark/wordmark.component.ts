@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { WORDMARK_PATHS, WORDMARK_VIEWBOX } from './wordmark.data';
 
-/** The OwneetOS wordmark at the host's height: the text colour, "OS" in the accent colour. */
+/** The OwneetOS logo at the host's height: the gamepad "O" and "OS" in the accent colour, "wneet" in the text colour. */
 @Component({
   selector: 'app-wordmark',
   templateUrl: './wordmark.component.html',

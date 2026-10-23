@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: step; }
+li {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px 22px 20px 74px;
+  position: relative; counter-increment: step;
+  &::before {
+    content: counter(step); position: absolute; left: 22px; top: 20px; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font-weight: 500;
+  }
+}
+h3 { font-family: var(--display); font-weight: 800; font-size: 21px; margin: 4px 0 6px; }
+p { margin: 0; color: var(--muted); }
+.note { margin-top: 18px; border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; }

@@ -61,13 +61,6 @@
     h2 { font-size: clamp(36px, 5vw, 60px); margin: 0; }
   }
 }
-footer {
-  width: 100%; border-top: 1px solid var(--line); padding: 22px 0 26px; font-size: 13.5px; color: var(--muted);
-  .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
-  app-wordmark { height: 22px; }
-  a { text-decoration: none; &:hover { color: var(--fg); text-decoration: underline; } }
-  .marks { flex-basis: 100%; font-size: 12.5px; }
-}
 
 @media (max-width: 960px) {
   .dots { display: none; }

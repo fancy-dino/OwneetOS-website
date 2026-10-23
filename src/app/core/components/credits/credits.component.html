@@ -1,0 +1,22 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<app-page page="credits">
+  <h2>{{ i18n.t('credits.authors') }}</h2>
+  <div class="list authors">
+    @for (author of authors; track author.github) {
+      <a [href]="'https://github.com/' + author.github"><b>{{ author.name }}</b><span>{{ author.github }}</span></a>
+    }
+  </div>
+  <h2>{{ i18n.t('credits.os') }}</h2>
+  <div class="list">
+    @for (credit of osCredits; track credit.name) {
+      <a [href]="credit.url"><b>{{ credit.name }}</b><span>{{ credit.licence }}</span></a>
+    }
+  </div>
+  <h2>{{ i18n.t('credits.site') }}</h2>
+  <div class="list">
+    @for (credit of siteCredits; track credit.name) {
+      <a [href]="credit.url"><b>{{ credit.name }}</b><span>{{ credit.licence }}</span></a>
+    }
+  </div>
+  <p><a class="more" [href]="creditsUrl">{{ i18n.t('credits.more') }}</a></p>
+</app-page>

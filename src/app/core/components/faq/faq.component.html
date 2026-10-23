@@ -1,0 +1,13 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<app-page page="faq">
+  <div class="faq">
+    @for (n of questions; track n) {
+      <details>
+        <summary>{{ i18n.t('faq.' + n + '.q') }}</summary>
+        <p>{{ i18n.t('faq.' + n + '.a') }}
+          @if (n === reportQuestion) { <a [href]="issuesUrl">{{ i18n.t('faq.' + n + '.link') }}</a> }
+        </p>
+      </details>
+    }
+  </div>
+</app-page>

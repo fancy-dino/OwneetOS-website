@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+h2 { font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
+.list {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;
+  a {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px;
+    text-decoration: none; display: grid; gap: 2px;
+    &:hover { border-color: var(--accent); }
+  }
+  b { font-weight: 500; }
+  span { color: var(--muted); font-size: 13px; }
+}
+// the two authors side by side, at the same level, on every screen
+.authors {
+  grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px;
+  a { padding: 16px 18px; }
+  b { font-family: var(--display); font-weight: 800; font-size: 20px; }
+}
+.more { color: var(--accent); }

@@ -3,6 +3,7 @@ import { DOCUMENT, Injectable, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import en from '../../../../i18n/en.json';
 import it from '../../../../i18n/it.json';
+import { Page } from '../sections/sections.model';
 import { Lang, MessageArgs, Messages } from './i18n.model';
 
 // The site's texts come from one JSON file per language in src/i18n/, in the same format as the
@@ -22,11 +23,11 @@ export class I18nService {
   readonly languages = Object.keys(MESSAGES) as Lang[];
 
   /** Shows the site in `lang`: its texts, the page's language, title and description. */
-  use(lang: Lang): void {
+  use(lang: Lang, page: Page = 'home'): void {
     this.lang.set(lang);
     this.document.documentElement.lang = lang;
-    this.title.setTitle(this.t('meta.title'));
-    this.meta.updateTag({ name: 'description', content: this.t('meta.description') });
+    this.title.setTitle(page === 'home' ? this.t('meta.title') : `${this.t(page + '.title')} — OwneetOS`);
+    this.meta.updateTag({ name: 'description', content: page === 'home' ? this.t('meta.description') : this.t(page + '.lede') });
   }
 
   /** The text of `key` in the current language (English when it is missing), `{name}` filled from `args`. */
@@ -41,5 +42,10 @@ export class I18nService {
   /** The path of `lang`'s home. */
   path(lang: Lang = this.lang()): string {
     return LANG_PATH[lang];
+  }
+
+  /** The path of `page` in `lang`: /guide, /it/guide; the home is the language's path. */
+  pagePath(page: Page, lang: Lang = this.lang()): string {
+    return page === 'home' ? LANG_PATH[lang] : `${LANG_PATH[lang].replace(/\/$/, '')}/${page}`;
   }
 }

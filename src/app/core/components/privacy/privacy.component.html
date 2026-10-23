@@ -1,0 +1,10 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<app-page page="privacy">
+  @for (block of blocks; track block) {
+    <h2>{{ i18n.t('privacy.' + block + '.title') }}</h2>
+    <p>{{ i18n.t('privacy.' + block + '.text') }}</p>
+  }
+  <h2>{{ i18n.t('privacy.questions.title') }}</h2>
+  <p>{{ i18n.t('privacy.questions.text') }} <a [href]="issuesUrl">{{ i18n.t('privacy.questions.link') }}</a></p>
+  <p><a class="more" [href]="githubPrivacyUrl">{{ i18n.t('privacy.statement') }}</a></p>
+</app-page>

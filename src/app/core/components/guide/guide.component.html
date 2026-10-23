@@ -1,0 +1,9 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<app-page page="guide">
+  <ol class="steps">
+    @for (step of steps; track step) {
+      <li><h3>{{ i18n.t('guide.' + step + '.title') }}</h3><p>{{ i18n.t('guide.' + step + '.text') }}</p></li>
+    }
+  </ol>
+  <p class="note">{{ i18n.t('guide.note') }}</p>
+</app-page>

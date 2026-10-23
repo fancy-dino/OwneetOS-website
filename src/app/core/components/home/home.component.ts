@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { Component, DOCUMENT, DestroyRef, ElementRef, afterNextRender, computed, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Lang } from '../../services/i18n/i18n.model';
+import { RouterLink } from '@angular/router';
 import { I18nService } from '../../services/i18n/i18n.service';
 import { NoticeService } from '../../services/notice/notice.service';
 import { SectionsService } from '../../services/sections/sections.service';
 import { IconComponent } from '../../../shared/components/icon/icon.component';
-import { WordmarkComponent } from '../../../shared/components/wordmark/wordmark.component';
 import { ConsoleScreenComponent } from '../console-screen/console-screen.component';
 import { FeatureCarouselComponent } from '../feature-carousel/feature-carousel.component';
+import { FooterComponent } from '../footer/footer.component';
 import { Fact, Requirement, SectionLink } from './home.model';
 
 /**
@@ -18,7 +17,7 @@ import { Fact, Requirement, SectionLink } from './home.model';
  */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, IconComponent, WordmarkComponent, ConsoleScreenComponent, FeatureCarouselComponent],
+  imports: [RouterLink, IconComponent, ConsoleScreenComponent, FeatureCarouselComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -51,10 +50,9 @@ export class HomeComponent {
     { icon: 'wifi-off', label: 'open.offline' },
     { icon: 'users', label: 'open.together' },
   ];
-  protected readonly sourceUrl = 'https://github.com/fancy-dino/OwneetOS';
 
   constructor() {
-    this.i18n.use(inject(ActivatedRoute).snapshot.data['lang'] as Lang);
+    // the language and the title are set by the route (app.routes.ts)
     const destroyRef = inject(DestroyRef);
     afterNextRender(() => {
       const view = this.document.defaultView;
@@ -78,9 +76,9 @@ export class HomeComponent {
     });
   }
 
-  /** A page that is not there yet. */
-  protected soon(event: Event, text = 'page.soon'): void {
+  /** The download, not there yet (until the first release). */
+  protected soon(event: Event): void {
     event.preventDefault();
-    this.notice.show(this.i18n.t(text));
+    this.notice.show(this.i18n.t('download.soon'));
   }
 }

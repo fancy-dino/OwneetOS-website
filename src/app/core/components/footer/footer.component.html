@@ -1,0 +1,14 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<footer>
+  <div class="wrap">
+    <a [routerLink]="i18n.path()" aria-label="OwneetOS"><app-wordmark /></a>
+    <a [routerLink]="i18n.pagePath('guide')">{{ i18n.t('info.guide') }}</a>
+    <a [routerLink]="i18n.pagePath('faq')">{{ i18n.t('info.faq') }}</a>
+    <a [routerLink]="i18n.pagePath('contribute')">{{ i18n.t('footer.contribute') }}</a>
+    <a [href]="repoUrl">{{ i18n.t('footer.source') }}</a>
+    <a [routerLink]="i18n.pagePath('credits')">{{ i18n.t('footer.credits') }}</a>
+    <a [routerLink]="i18n.pagePath('privacy')">{{ i18n.t('footer.privacy') }}</a>
+    <span>{{ i18n.t('footer.licence') }}</span>
+    <span class="marks">{{ i18n.t('footer.trademarks') }}</span>
+  </div>
+</footer>
