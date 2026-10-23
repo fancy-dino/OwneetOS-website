@@ -18,6 +18,9 @@ npm run build     # the static site in dist/owneetos-website/browser
 npm test          # unit tests (Vitest)
 ```
 
+Run npm from this folder: its `.npmrc` keeps npm's cache and logs in `.npm-cache/` (never in
+`~/.npm`).
+
 The Angular CLI's usage statistics are off (`"analytics": false` in `angular.json`); keep them
 off. New dependencies are added only at versions published at least two weeks earlier
 (`npm install --before=<date>`), and credited in [CREDITS.md](CREDITS.md) in the same change.
