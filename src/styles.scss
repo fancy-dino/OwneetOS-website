@@ -2,9 +2,11 @@
 // Global styles of the website: the console's design tokens (palettes Dusk when the visitor's
 // device is dark, Daylight when it is light), its fonts, served by the site itself, and the base.
 
-@font-face { font-family: 'Bricolage Grotesque'; font-weight: 800; font-display: swap; src: url('/fonts/BricolageGrotesque-ExtraBold.ttf') format('truetype'); }
-@font-face { font-family: 'Lexend'; font-weight: 400; font-display: swap; src: url('/fonts/Lexend-Regular.ttf') format('truetype'); }
-@font-face { font-family: 'Lexend'; font-weight: 500; font-display: swap; src: url('/fonts/Lexend-Medium.ttf') format('truetype'); }
+// relative to the stylesheet (fonts/*: externalDependencies in angular.json): the site may live
+// under a base path, as on GitHub Pages
+@font-face { font-family: 'Bricolage Grotesque'; font-weight: 800; font-display: swap; src: url('fonts/BricolageGrotesque-ExtraBold.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-weight: 400; font-display: swap; src: url('fonts/Lexend-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-weight: 500; font-display: swap; src: url('fonts/Lexend-Medium.ttf') format('truetype'); }
 
 :root {
   // Dusk

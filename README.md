@@ -28,6 +28,13 @@ off. New dependencies are added only at versions published at least two weeks ea
 Every pull request and every push to `main` is built and tested by GitHub Actions
 (`.github/workflows/ci.yml`, check **Build**); nothing is published from there.
 
+Every push to `main` publishes the site on GitHub Pages (`.github/workflows/pages.yml`), at
+<https://fancy-dino.github.io/OwneetOS-website/> until the project has its domain. The site lives
+under a base path there, so its own files are linked relatively (the fonts as `fonts/...`, declared
+in `externalDependencies` in `angular.json`), never from the root (`/fonts/...`). To try it as
+Pages serves it: `npx ng build --base-href /OwneetOS-website/`, then serve a folder where
+`OwneetOS-website` points to `dist/owneetos-website/browser`.
+
 ## Structure
 
 ```text
