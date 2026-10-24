@@ -1,6 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // The addresses the site links to, in one place.
 
+/**
+ * The site's own address, without the final "/", for the addresses that must be complete (the
+ * canonical address, the languages, the sharing picture). Set when the site is built: `define` in
+ * angular.json (the GitHub Pages address), replaced by the Pages workflow with the address GitHub
+ * gives it (the domain, once set).
+ */
+declare const SITE_URL: string;
+export const SITE_ADDRESS = SITE_URL;
+
 /** OwneetOS's code repository. */
 export const REPO_URL = 'https://github.com/fancy-dino/OwneetOS';
 /** Where problems are reported (GitHub issues). */

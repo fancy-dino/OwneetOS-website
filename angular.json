@@ -59,7 +59,10 @@
             "outputMode": "static",
             "externalDependencies": [
               "fonts/*"
-            ]
+            ],
+            "define": {
+              "SITE_URL": "'https://fancy-dino.github.io/OwneetOS-website'"
+            }
           },
           "configurations": {
             "production": {

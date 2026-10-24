@@ -43,12 +43,18 @@ jobs:
       - name: Run the unit tests
         run: npx ng test --watch=false
       - name: Build the static site under its address
-        # "/OwneetOS-website" on fancy-dino.github.io; empty once the domain is set (step 7.8h)
+        # "/OwneetOS-website" on fancy-dino.github.io, empty once the domain is set (step 7.8h); the
+        # complete address goes into the canonical addresses, the languages and the sharing tags
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
-        run: npx ng build --base-href "$BASE_PATH/"
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: npx ng build --base-href "$BASE_PATH/" --define "SITE_URL='$SITE_URL'"
       - name: Make the prerendered /404 the page GitHub Pages shows for wrong addresses
         run: node scripts/not-found-page.mjs
+      - name: Write sitemap.xml and robots.txt
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: node scripts/sitemap.mjs
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: dist/owneetos-website/browser

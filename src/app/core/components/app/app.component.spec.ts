@@ -60,6 +60,19 @@ describe('AppComponent', () => {
     expect(document.querySelector('meta[name="robots"]')).toBeNull();
   });
 
+  it('gives each page its complete address, its languages and what a shared link shows', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/it/guide');
+    const href = (selector: string) => document.head.querySelector(selector)?.getAttribute('href');
+    expect(href('link[rel="canonical"]')).toMatch(/\/it\/guide\/$/);
+    expect(href('link[hreflang="en"]')).toMatch(/[^t]\/guide\/$/);
+    expect(href('link[hreflang="x-default"]')).toBe(href('link[hreflang="en"]'));
+    expect(document.head.querySelector('meta[property="og:title"]')?.getAttribute('content')).toBe('Installa OwneetOS - OwneetOS');
+    expect(document.head.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(/\/share-picture\.png$/);
+    await harness.navigateByUrl('/it/nowhere');
+    expect(document.head.querySelector('link[rel="canonical"], link[hreflang]')).toBeNull();
+  });
+
   it('keeps the slogan in English in every language', () => {
     expect(italian['hero.kicker']).toBe(english['hero.kicker']);
   });

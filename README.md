@@ -14,7 +14,7 @@ Requires Node.js 20.19, 22.12 or 24 and npm.
 ```sh
 npm ci            # install the exact versions of package-lock.json
 npm start         # development server on http://localhost:4200
-npm run build     # the static site in dist/owneetos-website/browser (with its 404.html)
+npm run build     # the static site in dist/owneetos-website/browser (404.html, sitemap.xml, robots.txt)
 npm test          # unit tests (Vitest)
 ```
 
@@ -35,6 +35,11 @@ in `externalDependencies` in `angular.json`), never from the root (`/fonts/...`)
 Pages serves it: `npx ng build --base-href /OwneetOS-website/ && node scripts/not-found-page.mjs`,
 then serve a folder where `OwneetOS-website` points to `dist/owneetos-website/browser`.
 
+The pages' complete addresses (canonical address, languages, sharing tags, sitemap) use the site's
+address, `SITE_URL`: `define` in `angular.json` holds the GitHub Pages address, and the Pages
+workflow replaces it with the one GitHub gives (`--define`, and `SITE_URL` for `sitemap.mjs`), so
+the project's domain needs no change here.
+
 ## Structure
 
 ```text
@@ -44,11 +49,13 @@ src/app/core/components/      the site's components: app (the root), intro (the 
                               feature-carousel), guide, faq, credits, privacy, contribute,
                               not-found (any wrong address; built into 404.html by
                               scripts/not-found-page.mjs)
-public/                       files served as they are: the fonts, and the icons (favicon.svg,
-                              favicon.ico, apple-touch-icon.png) made from the logo and the
-                              palettes by node scripts/make-favicon.mjs: run it again when
-                              either changes
-src/app/core/services/        app-wide services (i18n, sections, notice)
+public/                       files served as they are: the fonts; the icons (favicon.svg,
+                              favicon.ico, apple-touch-icon.png) and the sharing picture
+                              (share-picture.png) made from the logo and the palettes by
+                              node scripts/make-favicon.mjs and node scripts/make-share-picture.mjs
+                              (this one with Chromium): run them again when either changes
+scripts/                      also not-found-page.mjs and sitemap.mjs, run after ng build
+src/app/core/services/        app-wide services (i18n, head, sections, notice)
 src/app/shared/components/    components used in several places (icon, wordmark)
 src/app/shared/links/         the addresses the site links to
 ```

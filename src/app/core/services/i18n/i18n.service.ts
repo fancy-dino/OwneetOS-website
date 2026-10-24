@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { DOCUMENT, Injectable, inject, signal } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import en from '../../../../i18n/en.json';
 import it from '../../../../i18n/it.json';
 import { Page } from '../sections/sections.model';
@@ -16,18 +15,14 @@ export const LANG_PATH: Readonly<Record<Lang, string>> = { en: '/', it: '/it' };
 @Injectable({ providedIn: 'root' })
 export class I18nService {
   private readonly document = inject(DOCUMENT);
-  private readonly title = inject(Title);
-  private readonly meta = inject(Meta);
 
   readonly lang = signal<Lang>('en');
   readonly languages = Object.keys(MESSAGES) as Lang[];
 
-  /** Shows the site in `lang`: its texts, the page's language, title and description. */
-  use(lang: Lang, page: Page = 'home'): void {
+  /** Shows the site in `lang`: its texts and the page's language (the head: HeadService). */
+  use(lang: Lang): void {
     this.lang.set(lang);
     this.document.documentElement.lang = lang;
-    this.title.setTitle(page === 'home' ? this.t('meta.title') : this.t('meta.page', { page: this.t(page + '.title') }));
-    this.meta.updateTag({ name: 'description', content: page === 'home' ? this.t('meta.description') : this.t(page + '.lede') });
   }
 
   /** The text of `key` in the current language (English when it is missing), `{name}` filled from `args`. */
