@@ -38,7 +38,7 @@ describe('AppComponent', () => {
       await harness.navigateByUrl(url);
       expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(heading);
     }
-    expect(document.title).toBe('Fallo con noi — OwneetOS');
+    expect(document.title).toBe('Fallo con noi - OwneetOS');
   });
 
   it('opens the credits with the two authors', async () => {
@@ -66,6 +66,10 @@ describe('AppComponent', () => {
 });
 
 describe('Translations', () => {
+  it('never uses long dashes, only "-" (owner, 2026-10-24)', () => {
+    expect(JSON.stringify([english, italian])).not.toMatch(/[—–]/);
+  });
+
   it('every language has every English text', () => {
     expect(Object.keys(italian).sort()).toEqual(Object.keys(english).sort());
   });

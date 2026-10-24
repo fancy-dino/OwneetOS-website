@@ -3,7 +3,8 @@
     "language": "Italiano",
     "plural": "one-other"
   },
-  "meta.title": "OwneetOS — Trasforma il tuo PC in una console",
+  "meta.title": "OwneetOS - Trasforma il tuo PC in una console",
+  "meta.page": "{page} - OwneetOS",
   "meta.description": "Un sistema gratuito e open source che trasforma il tuo PC in una console. Ti basta un controller.",
   "nav.home": "Home",
   "nav.features": "Funzionalità",
@@ -83,7 +84,7 @@
   "info.faq": "Domande",
   "info.faq.text": "Le risposte alle domande più comuni.",
   "download.title": "In arrivo.",
-  "download.button": "Download — in arrivo",
+  "download.button": "Download - in arrivo",
   "download.soon": "Il download si apre con la prima versione.",
   "footer.contribute": "Contribuisci e traduci",
   "footer.source": "Codice sorgente",

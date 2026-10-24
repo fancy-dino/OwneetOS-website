@@ -26,7 +26,7 @@ export class I18nService {
   use(lang: Lang, page: Page = 'home'): void {
     this.lang.set(lang);
     this.document.documentElement.lang = lang;
-    this.title.setTitle(page === 'home' ? this.t('meta.title') : `${this.t(page + '.title')} — OwneetOS`);
+    this.title.setTitle(page === 'home' ? this.t('meta.title') : this.t('meta.page', { page: this.t(page + '.title') }));
     this.meta.updateTag({ name: 'description', content: page === 'home' ? this.t('meta.description') : this.t(page + '.lede') });
   }
 

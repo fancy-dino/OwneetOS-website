@@ -3,7 +3,8 @@
     "language": "English",
     "plural": "one-other"
   },
-  "meta.title": "OwneetOS — Turn your PC into a game console",
+  "meta.title": "OwneetOS - Turn your PC into a game console",
+  "meta.page": "{page} - OwneetOS",
   "meta.description": "A free and open source system that turns your PC into a game console. You only need a controller.",
   "nav.home": "Home",
   "nav.features": "Features",
@@ -83,7 +84,7 @@
   "info.faq": "FAQ",
   "info.faq.text": "Answers to the common questions.",
   "download.title": "Coming soon.",
-  "download.button": "Download — coming soon",
+  "download.button": "Download - coming soon",
   "download.soon": "The download opens with the first release.",
   "footer.contribute": "Contribute and translate",
   "footer.source": "Source code",
