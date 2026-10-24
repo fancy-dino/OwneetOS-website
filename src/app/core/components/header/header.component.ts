@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Lang } from '../../services/i18n/i18n.model';
 import { I18nService } from '../../services/i18n/i18n.service';
 import { SectionsService } from '../../services/sections/sections.service';
 import { IconComponent } from '../../../shared/components/icon/icon.component';
@@ -35,5 +36,11 @@ export class HeaderComponent {
   protected here(link: HeaderLink): boolean {
     const page = this.sections.page();
     return link.page ? page === link.page : page === 'home' && this.sections.current() === link.section;
+  }
+
+  /** The same page in `lang`; on the not-found page, the same wrong address. */
+  protected langPath(lang: Lang): string {
+    const page = this.sections.page();
+    return page === 'not-found' ? this.i18n.path(lang).replace(/\/$/, '') + this.sections.lost() : this.i18n.pagePath(page, lang);
   }
 }

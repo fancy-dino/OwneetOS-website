@@ -20,7 +20,7 @@
     <div class="end">
       <div class="lang" role="group" [attr.aria-label]="i18n.t('nav.language')">
         @for (lang of i18n.languages; track lang) {
-          <a [routerLink]="i18n.pagePath(sections.page(), lang)" [attr.hreflang]="lang"
+          <a [routerLink]="langPath(lang)" [attr.hreflang]="lang"
             [fragment]="sections.page() === 'home' ? sections.current() : undefined"
             [attr.aria-current]="i18n.lang() === lang ? 'true' : null">{{ lang.toUpperCase() }}</a>
         }

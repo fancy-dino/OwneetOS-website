@@ -48,6 +48,18 @@ describe('AppComponent', () => {
     expect(authors).toEqual(['Marco De Franco', 'Daniele De Padova']);
   });
 
+  it('shows the not-found page for a wrong address, in the language the address names', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/it/nowhere');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Questa pagina non c’è');
+    expect(document.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('noindex');
+    await harness.navigateByUrl('/no/where');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('This page is not here');
+    expect(document.documentElement.lang).toBe('en');
+    await harness.navigateByUrl('/guide');
+    expect(document.querySelector('meta[name="robots"]')).toBeNull();
+  });
+
   it('keeps the slogan in English in every language', () => {
     expect(italian['hero.kicker']).toBe(english['hero.kicker']);
   });

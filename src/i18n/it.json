@@ -156,5 +156,11 @@
   "contribute.test.link": "Apri una segnalazione",
   "contribute.code.title": "Codice e design",
   "contribute.code.text": "Il codice è su GitHub; le pull request vengono riviste dal team.",
-  "contribute.code.link": "Codice sorgente"
+  "contribute.code.link": "Codice sorgente",
+  "not-found.code": "404",
+  "not-found.title": "Questa pagina non c’è",
+  "not-found.lede": "Forse l’indirizzo è sbagliato, o la pagina è stata spostata.",
+  "not-found.home": "Torna alla home",
+  "not-found.guide": "Guida all’installazione",
+  "not-found.faq": "Domande"
 }

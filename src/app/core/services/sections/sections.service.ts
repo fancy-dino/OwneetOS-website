@@ -7,4 +7,6 @@ import { Page } from './sections.model';
 export class SectionsService {
   readonly page = signal<Page>('home');
   readonly current = signal('home');
+  /** On the not-found page, the wrong address without its language (/nowhere): the language links keep it. */
+  readonly lost = signal('');
 }

@@ -1,0 +1,9 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<app-page page="not-found" [back]="false">
+  <p class="above code disp" aria-hidden="true">{{ i18n.t('not-found.code') }}</p>
+  <div class="ways">
+    <a class="btn primary" [routerLink]="i18n.path()"><app-icon name="arrow-left" />{{ i18n.t('not-found.home') }}</a>
+    <a class="btn ghost" [routerLink]="i18n.pagePath('guide')">{{ i18n.t('not-found.guide') }}</a>
+    <a class="btn ghost" [routerLink]="i18n.pagePath('faq')">{{ i18n.t('not-found.faq') }}</a>
+  </div>
+</app-page>

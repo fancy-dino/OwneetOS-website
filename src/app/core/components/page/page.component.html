@@ -1,6 +1,9 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <div class="wrap">
-  <a class="back" [routerLink]="i18n.path()"><app-icon name="arrow-left" />{{ i18n.t('page.back') }}</a>
+  @if (back()) {
+    <a class="back" [routerLink]="i18n.path()"><app-icon name="arrow-left" />{{ i18n.t('page.back') }}</a>
+  }
+  <ng-content select=".above" />
   <h1 class="disp">{{ i18n.t(page() + '.title') }}</h1>
   <p class="lede">{{ i18n.t(page() + '.lede') }}</p>
   <ng-content />
