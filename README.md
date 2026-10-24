@@ -44,6 +44,10 @@ src/app/core/components/      the site's components: app (the root), intro (the 
                               feature-carousel), guide, faq, credits, privacy, contribute,
                               not-found (any wrong address; built into 404.html by
                               scripts/not-found-page.mjs)
+public/                       files served as they are: the fonts, and the icons (favicon.svg,
+                              favicon.ico, apple-touch-icon.png) made from the logo and the
+                              palettes by node scripts/make-favicon.mjs: run it again when
+                              either changes
 src/app/core/services/        app-wide services (i18n, sections, notice)
 src/app/shared/components/    components used in several places (icon, wordmark)
 src/app/shared/links/         the addresses the site links to
