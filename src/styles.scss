@@ -5,8 +5,8 @@
 // relative to the stylesheet (fonts/*: externalDependencies in angular.json): the site may live
 // under a base path, as on GitHub Pages
 @font-face { font-family: 'Bricolage Grotesque'; font-weight: 800; font-display: swap; src: url('fonts/BricolageGrotesque-ExtraBold.ttf') format('truetype'); }
-@font-face { font-family: 'Lexend'; font-weight: 400; font-display: swap; src: url('fonts/Lexend-Regular.ttf') format('truetype'); }
-@font-face { font-family: 'Lexend'; font-weight: 500; font-display: swap; src: url('fonts/Lexend-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-weight: 400; font-display: swap; src: url('fonts/Lexend-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Lexend'; font-weight: 500; font-display: swap; src: url('fonts/Lexend-Medium.woff2') format('woff2'); }
 
 :root {
   // Dusk

@@ -23,7 +23,7 @@ const slogan = JSON.parse(readFileSync('src/i18n/en.json', 'utf8'))['hero.kicker
 const work = resolve('dist/share-picture');
 mkdirSync(work, { recursive: true });
 writeFileSync(`${work}/picture.html`, `<!doctype html><meta charset="utf-8"><style>
-@font-face { font-family: Lexend; src: url('${resolve('public/fonts/Lexend-Regular.ttf')}'); }
+@font-face { font-family: Lexend; src: url('${resolve('public/fonts/Lexend-Regular.woff2')}'); }
 html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: ${token('bg')}; }
 body { display: grid; place-content: center; justify-items: center; gap: 20px; }
 svg { width: 580px; display: block; }
