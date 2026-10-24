@@ -29,16 +29,15 @@ Every pull request and every push to `main` is built and tested by GitHub Action
 (`.github/workflows/ci.yml`, check **Build**); nothing is published from there.
 
 Every push to `main` publishes the site on GitHub Pages (`.github/workflows/pages.yml`), at
-<https://fancy-dino.github.io/OwneetOS-website/> until the project has its domain. The site lives
-under a base path there, so its own files are linked relatively (the fonts as `fonts/...`, declared
-in `externalDependencies` in `angular.json`), never from the root (`/fonts/...`). To try it as
-Pages serves it: `npx ng build --base-href /OwneetOS-website/ && node scripts/not-found-page.mjs`,
-then serve a folder where `OwneetOS-website` points to `dist/owneetos-website/browser`.
+<https://owneetos.org/>, the project's domain (set in the repository's Pages settings, with its DNS
+at the registrar; the old address `fancy-dino.github.io/OwneetOS-website` leads there). The site's
+own files are still linked relatively (the fonts as `fonts/...`, declared in
+`externalDependencies` in `angular.json`), never from the root (`/fonts/...`), so it also works
+under a base path (`npx ng build --base-href /some/path/`).
 
 The pages' complete addresses (canonical address, languages, sharing tags, sitemap) use the site's
-address, `SITE_URL`: `define` in `angular.json` holds the GitHub Pages address, and the Pages
-workflow replaces it with the one GitHub gives (`--define`, and `SITE_URL` for `sitemap.mjs`), so
-the project's domain needs no change here.
+address, `SITE_URL`: `define` in `angular.json` holds `https://owneetos.org`, and the Pages workflow
+passes the one GitHub gives (`--define`, and `SITE_URL` for `sitemap.mjs`).
 
 ## Structure
 

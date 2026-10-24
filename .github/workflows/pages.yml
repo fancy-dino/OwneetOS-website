@@ -43,8 +43,8 @@ jobs:
       - name: Run the unit tests
         run: npx ng test --watch=false
       - name: Build the static site under its address
-        # "/OwneetOS-website" on fancy-dino.github.io, empty once the domain is set (step 7.8h); the
-        # complete address goes into the canonical addresses, the languages and the sharing tags
+        # empty on the project's domain (step 7.8h; "/OwneetOS-website" on fancy-dino.github.io);
+        # the complete address goes into the canonical addresses, the languages and the sharing tags
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
           SITE_URL: ${{ steps.pages.outputs.base_url }}

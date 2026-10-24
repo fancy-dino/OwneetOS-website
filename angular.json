@@ -61,7 +61,7 @@
               "fonts/*"
             ],
             "define": {
-              "SITE_URL": "'https://fancy-dino.github.io/OwneetOS-website'"
+              "SITE_URL": "'https://owneetos.org'"
             }
           },
           "configurations": {
