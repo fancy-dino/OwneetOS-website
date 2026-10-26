@@ -17,6 +17,7 @@ ul a {
   a { padding: 4px 10px; border-radius: 999px; font-size: 13px; color: var(--muted); text-decoration: none; }
   a[aria-current='true'] { background: var(--raised); color: var(--fg); }
 }
+.menu-lang { display: none; }
 .menu-btn {
   display: none; align-items: center; gap: 6px; background: none; border: 1px solid var(--line);
   border-radius: 999px; padding: 6px 14px; font-size: 14px; cursor: pointer;
@@ -33,4 +34,14 @@ ul a {
     a { padding: 12px; }
   }
   .get { display: none; }
+}
+
+// On a phone the five languages no longer fit next to the Menu button: they move into the menu.
+@media (max-width: 640px) {
+  .end .lang { display: none; }
+  ul .menu-lang {
+    display: flex; gap: 6px; flex-wrap: wrap; border-top: 1px solid var(--line); margin-top: 8px; padding-top: 12px;
+    a { padding: 8px 14px; border: 1px solid var(--line); font-size: 14px; }
+    a[aria-current='true'] { background: var(--raised); color: var(--fg); }
+  }
 }

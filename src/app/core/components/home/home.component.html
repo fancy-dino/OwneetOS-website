@@ -33,7 +33,7 @@
     <div class="head"><h2 class="disp">{{ i18n.t('requirements.title') }}</h2><p>{{ i18n.t('requirements.lede') }}</p></div>
     <div class="figures">
       @for (item of requirements; track item.label) {
-        <div class="figure"><b>{{ item.value }}</b><span>{{ i18n.t(item.label) }}</span></div>
+        <div class="figure"><b>{{ i18n.t(item.value) }}</b><span>{{ i18n.t(item.label) }}</span></div>
       }
     </div>
     <p class="more"><a [routerLink]="i18n.pagePath('guide')">{{ i18n.t('requirements.more') }}</a></p>

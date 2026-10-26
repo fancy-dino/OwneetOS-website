@@ -4,9 +4,14 @@ import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import english from '../../../../i18n/en.json';
 import italian from '../../../../i18n/it.json';
+import german from '../../../../i18n/de.json';
+import french from '../../../../i18n/fr.json';
+import spanish from '../../../../i18n/es.json';
 import { AppComponent } from './app.component';
 import { routes } from '../../../app.routes';
 import { I18nService } from '../../services/i18n/i18n.service';
+
+const OTHERS = { italian, german, french, spanish };
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -74,17 +79,33 @@ describe('AppComponent', () => {
   });
 
   it('keeps the slogan in English in every language', () => {
-    expect(italian['hero.kicker']).toBe(english['hero.kicker']);
+    for (const messages of Object.values(OTHERS)) {
+      expect(messages['hero.kicker']).toBe(english['hero.kicker']);
+    }
+  });
+
+  it('shows the pages in German, French and Spanish, and their wrong addresses too', async () => {
+    const harness = await RouterTestingHarness.create();
+    for (const [url, heading, lang] of [['/de', 'Mach deinen PC zur Spielkonsole.', 'de'], ['/fr/guide', 'Installer OwneetOS', 'fr'],
+      ['/es/faq', 'Preguntas', 'es'], ['/es/nowhere', 'Esta página no existe', 'es']]) {
+      await harness.navigateByUrl(url);
+      expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(heading);
+      expect(document.documentElement.lang).toBe(lang);
+    }
+    await harness.navigateByUrl('/de/guide');
+    expect(document.head.querySelectorAll('link[rel="alternate"][hreflang]').length).toBe(6);
   });
 });
 
 describe('Translations', () => {
   it('never uses long dashes, only "-" (owner, 2026-10-24)', () => {
-    expect(JSON.stringify([english, italian])).not.toMatch(/[—–]/);
+    expect(JSON.stringify([english, ...Object.values(OTHERS)])).not.toMatch(/[—–]/);
   });
 
   it('every language has every English text', () => {
-    expect(Object.keys(italian).sort()).toEqual(Object.keys(english).sort());
+    for (const messages of Object.values(OTHERS)) {
+      expect(Object.keys(messages).sort()).toEqual(Object.keys(english).sort());
+    }
   });
 
   it('fills {name} from the arguments', () => {

@@ -2,15 +2,18 @@
 import { DOCUMENT, Injectable, inject, signal } from '@angular/core';
 import en from '../../../../i18n/en.json';
 import it from '../../../../i18n/it.json';
+import de from '../../../../i18n/de.json';
+import fr from '../../../../i18n/fr.json';
+import es from '../../../../i18n/es.json';
 import { Page } from '../sections/sections.model';
 import { Lang, MessageArgs, Messages } from './i18n.model';
 
 // The site's texts come from one JSON file per language in src/i18n/, in the same format as the
 // console's message files: adding a language is adding its file here and its path below.
-const MESSAGES: Readonly<Record<Lang, Messages>> = { en, it };
+const MESSAGES: Readonly<Record<Lang, Messages>> = { en, it, de, fr, es };
 
 /** Where each language's home lives: English at the root, the others under their code. */
-export const LANG_PATH: Readonly<Record<Lang, string>> = { en: '/', it: '/it' };
+export const LANG_PATH: Readonly<Record<Lang, string>> = { en: '/', it: '/it', de: '/de', fr: '/fr', es: '/es' };
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {

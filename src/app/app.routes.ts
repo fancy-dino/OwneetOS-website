@@ -14,10 +14,10 @@ import { I18nService } from './core/services/i18n/i18n.service';
 import { Page } from './core/services/sections/sections.model';
 import { SectionsService } from './core/services/sections/sections.service';
 
-// Every page in every language: English at the root (/, /guide, ...), Italian under /it (/it,
-// /it/guide, ...), each prerendered to its own file. Before a page shows, its language and title
+// Every page in every language: English at the root (/, /guide, ...), the others under their code
+// (/it, /it/guide, /de, /fr, /es, ...), each prerendered to its own file. Before a page shows, its language and title
 // and its head (title, description, addresses, sharing) are set, so the prerendered file has them too.
-// A wrong address shows the not-found page in the language it names (/it/... in Italian). Angular
+// A wrong address shows the not-found page in the language it names (/it/... in Italian, /de/... in German). Angular
 // never prerenders catch-all routes, so /404 is prerendered and the build turns it into 404.html,
 // the file GitHub Pages serves for every address that leads nowhere (scripts/not-found-page.mjs).
 const PAGES: readonly [Page, Type<unknown>][] = [
@@ -28,7 +28,7 @@ const PAGES: readonly [Page, Type<unknown>][] = [
   ['privacy', PrivacyComponent],
   ['contribute', ContributeComponent],
 ];
-const LANG_ROOT: Readonly<Record<Lang, string>> = { en: '', it: 'it' };
+const LANG_ROOT: Readonly<Record<Lang, string>> = { en: '', it: 'it', de: 'de', fr: 'fr', es: 'es' };
 
 const show = (lang: Lang, page: Page): CanActivateFn => (route, state) => {
   inject(I18nService).use(lang);
@@ -48,6 +48,7 @@ export const routes: Routes = [
     })),
   ),
   { path: '404', component: NotFoundComponent, canActivate: [show('en', 'not-found')] },
-  { path: LANG_ROOT.it, children: [{ path: '**', component: NotFoundComponent, canActivate: [show('it', 'not-found')] }] },
+  ...(Object.keys(LANG_ROOT) as Lang[]).filter((lang) => LANG_ROOT[lang]).map((lang) =>
+    ({ path: LANG_ROOT[lang], children: [{ path: '**', component: NotFoundComponent, canActivate: [show(lang, 'not-found')] }] })),
   { path: '**', component: NotFoundComponent, canActivate: [show('en', 'not-found')] },
 ];

@@ -38,11 +38,11 @@ export class HomeComponent {
     { id: 'download', label: 'nav.download' },
   ];
   protected readonly requirements: readonly Requirement[] = [
-    { value: '64-bit', label: 'requirements.cpu' },
-    { value: 'UEFI', label: 'requirements.firmware' },
-    { value: '4 GB', label: 'requirements.ram' },
-    { value: '32 GB', label: 'requirements.disk' },
-    { value: 'Vulkan', label: 'requirements.graphics' },
+    { value: 'requirements.cpu.value', label: 'requirements.cpu' },
+    { value: 'requirements.firmware.value', label: 'requirements.firmware' },
+    { value: 'requirements.ram.value', label: 'requirements.ram' },
+    { value: 'requirements.disk.value', label: 'requirements.disk' },
+    { value: 'requirements.graphics.value', label: 'requirements.graphics' },
   ];
   protected readonly facts: readonly Fact[] = [
     { icon: 'code-xml', label: 'open.free' },

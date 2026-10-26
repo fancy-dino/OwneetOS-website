@@ -15,6 +15,14 @@
           }
         </li>
       }
+      <!-- on a phone the languages leave the header and come into the menu -->
+      <li class="menu-lang" role="group" [attr.aria-label]="i18n.t('nav.language')">
+        @for (lang of i18n.languages; track lang) {
+          <a [routerLink]="langPath(lang)" [attr.hreflang]="lang" (click)="menuOpen.set(false)"
+            [fragment]="sections.page() === 'home' ? sections.current() : undefined"
+            [attr.aria-current]="i18n.lang() === lang ? 'true' : null">{{ lang.toUpperCase() }}</a>
+        }
+      </li>
     </ul>
 
     <div class="end">

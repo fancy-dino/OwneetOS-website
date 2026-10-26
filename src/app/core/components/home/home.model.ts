@@ -6,7 +6,7 @@ export interface SectionLink {
   readonly label: string;
 }
 
-/** A system requirement: its figure (64-bit, 4 GB, ...) and the key of what it is. */
+/** A system requirement: the keys of its figure (64-bit, 4 GB, ...) and of what it is. */
 export interface Requirement {
   readonly value: string;
   readonly label: string;

@@ -3,9 +3,12 @@
 The website of [OwneetOS](https://github.com/fancy-dino/OwneetOS), a free operating system that
 turns a PC into a game console used with a controller only.
 
-A static site built with [Angular](https://angular.dev): every page, in every language (`/`, `/guide`,
-`/it`, `/it/guide`, ...), is prerendered to plain files, published on GitHub Pages. It collects no data: no analytics, no cookies, no requests to third
-parties (its fonts and icons are served by the site itself).
+A static site built with [Angular](https://angular.dev): every page, in every language (English at `/`,
+`/guide`, ...; Italian, German, French and Spanish under `/it`, `/de`, `/fr`, `/es`), is prerendered to
+plain files, published on GitHub Pages. It collects no data: no analytics, no cookies, no requests to
+third parties (its fonts and icons are served by the site itself). A new language is a file in
+`src/i18n/`, its code in `Lang`, `LANG_PATH` and `LANG_ROOT`, and its `og:locale`; a translation is
+published only after someone who speaks it has checked it.
 
 ## Working on it
 
@@ -42,7 +45,7 @@ passes the one GitHub gives (`--define`, and `SITE_URL` for `sitemap.mjs`).
 ## Structure
 
 ```text
-src/i18n/                     the texts, one JSON file per language (en.json, it.json)
+src/i18n/                     the texts, one JSON file per language (en, it, de, fr, es)
 src/app/core/components/      the site's components: app (the root), intro (the start-up animation),
                               header, footer, page (a page's frame), home (with console-screen and
                               feature-carousel), guide, faq, credits, privacy, contribute,

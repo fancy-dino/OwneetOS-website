@@ -9,7 +9,7 @@ import { Page } from '../sections/sections.model';
 /** The sharing picture (scripts/make-share-picture.mjs), and its size. */
 const PICTURE = { path: 'share-picture.png', width: '1200', height: '630' };
 /** Open Graph's name of each language. */
-const OG_LOCALE: Readonly<Record<Lang, string>> = { en: 'en_US', it: 'it_IT' };
+const OG_LOCALE: Readonly<Record<Lang, string>> = { en: 'en_US', it: 'it_IT', de: 'de_DE', fr: 'fr_FR', es: 'es_ES' };
 
 /**
  * The head of a page, in the current language (step 7.8f): its title and description, its complete
