@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <title>OwneetOS</title>
   <base href="/">
+  <!-- the theme the visitor chose (ThemeService), applied before the page shows: no flash -->
+  <script>try { var t = localStorage.getItem('owneet-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- the site's icons, made by scripts/make-favicon.mjs; relative, as the site may live under a base path -->
   <link rel="icon" href="favicon.ico" sizes="32x32">

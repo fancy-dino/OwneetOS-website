@@ -57,7 +57,7 @@ public/                       files served as they are: the fonts; the icons (fa
                               node scripts/make-favicon.mjs and node scripts/make-share-picture.mjs
                               (this one with Chromium): run them again when either changes
 scripts/                      also not-found-page.mjs and sitemap.mjs, run after ng build
-src/app/core/services/        app-wide services (i18n, head, sections, notice)
+src/app/core/services/        app-wide services (i18n, head, theme, sections, notice)
 src/app/shared/components/    components used in several places (icon, wordmark)
 src/app/shared/links/         the addresses the site links to
 ```

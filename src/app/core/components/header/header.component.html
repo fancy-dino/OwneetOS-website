@@ -15,24 +15,31 @@
           }
         </li>
       }
-      <!-- on a phone the languages leave the header and come into the menu -->
-      <li class="menu-lang" role="group" [attr.aria-label]="i18n.t('nav.language')">
-        @for (lang of i18n.languages; track lang) {
-          <a [routerLink]="langPath(lang)" [attr.hreflang]="lang" (click)="menuOpen.set(false)"
-            [fragment]="sections.page() === 'home' ? sections.current() : undefined"
-            [attr.aria-current]="i18n.lang() === lang ? 'true' : null">{{ lang.toUpperCase() }}</a>
-        }
-      </li>
     </ul>
 
     <div class="end">
-      <div class="lang" role="group" [attr.aria-label]="i18n.t('nav.language')">
-        @for (lang of i18n.languages; track lang) {
-          <a [routerLink]="langPath(lang)" [attr.hreflang]="lang"
-            [fragment]="sections.page() === 'home' ? sections.current() : undefined"
-            [attr.aria-current]="i18n.lang() === lang ? 'true' : null">{{ lang.toUpperCase() }}</a>
-        }
+      <!-- the languages: a drop-down menu, each in its own name -->
+      <div class="langmenu">
+        <button class="hdr-btn" type="button" aria-haspopup="true" aria-controls="languages" [attr.aria-expanded]="langOpen()"
+          [attr.aria-label]="i18n.t('nav.language')" (click)="langOpen.set(!langOpen())">
+          <app-icon name="globe" /><span class="code">{{ i18n.lang().toUpperCase() }}</span><app-icon class="chev" name="chevron-down" />
+        </button>
+        <ul class="lang-list" id="languages" [hidden]="!langOpen()">
+          @for (lang of i18n.languages; track lang) {
+            <li>
+              <a [routerLink]="langPath(lang)" [attr.hreflang]="lang" [attr.lang]="lang" (click)="langOpen.set(false)"
+                [fragment]="sections.page() === 'home' ? sections.current() : undefined"
+                [attr.aria-current]="i18n.lang() === lang ? 'true' : null">{{ i18n.name(lang) }}
+                @if (i18n.lang() === lang) { <app-icon name="check" /> }</a>
+            </li>
+          }
+        </ul>
       </div>
+      <!-- light or dark: both icons are drawn, the CSS shows the one of the other theme -->
+      <button class="hdr-btn theme-btn" type="button" [attr.aria-label]="i18n.t('nav.theme')" [attr.title]="i18n.t('nav.theme')"
+        (click)="theme.toggle()">
+        <app-icon class="to-light" name="sun" /><app-icon class="to-dark" name="moon" />
+      </button>
       <a class="btn primary small get" [routerLink]="i18n.path()" fragment="download">{{ i18n.t('nav.get') }}</a>
       <button class="menu-btn" type="button" aria-controls="menu" [attr.aria-expanded]="menuOpen()"
         (click)="menuOpen.set(!menuOpen())">

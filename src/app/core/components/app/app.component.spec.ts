@@ -78,6 +78,23 @@ describe('AppComponent', () => {
     expect(document.head.querySelector('link[rel="canonical"], link[hreflang]')).toBeNull();
   });
 
+  it('offers the languages in a menu, each in its own name, and switches the theme', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/fr');
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const header = fixture.nativeElement as HTMLElement;
+    const names = [...header.querySelectorAll('#languages a')].map((a) => a.textContent?.trim());
+    expect(names).toEqual(['English', 'Italiano', 'Deutsch', 'Français', 'Español']);
+    expect(header.querySelector('#languages')?.hasAttribute('hidden')).toBe(true);
+    const before = document.documentElement.dataset['theme'];
+    (header.querySelector('.theme-btn') as HTMLButtonElement).click();
+    const after = document.documentElement.dataset['theme'];
+    expect(after === 'light' || after === 'dark').toBe(true);
+    expect(after).not.toBe(before);
+    expect(localStorage.getItem('owneet-theme')).toBe(after);
+  });
+
   it('keeps the slogan in English in every language', () => {
     for (const messages of Object.values(OTHERS)) {
       expect(messages['hero.kicker']).toBe(english['hero.kicker']);

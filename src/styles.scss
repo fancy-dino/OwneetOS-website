@@ -19,14 +19,21 @@
   --head: 68px;
   color-scheme: dark;
 }
-@media (prefers-color-scheme: light) {
-  :root {
-    // Daylight
-    --bg: #eef0f5; --surface: #fff; --raised: #e2e6ef; --line: #c9cfdc; --fg: #121826;
-    --muted: #5a6378; --accent: #2f5bea; --on-accent: #fff;
-    color-scheme: light;
-  }
+@mixin daylight {
+  --bg: #eef0f5; --surface: #fff; --raised: #e2e6ef; --line: #c9cfdc; --fg: #121826;
+  --muted: #5a6378; --accent: #2f5bea; --on-accent: #fff;
+  color-scheme: light;
 }
+// Daylight when the device is light, unless the visitor chose dark; always when they chose light
+// (the header's switch, ThemeService: data-theme on <html>)
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) { @include daylight; } }
+:root[data-theme='light'] { @include daylight; }
+// Switching the theme: the colours fade (only after the switch is pressed, never at loading)
+html.theming, html.theming * {
+  transition: background-color .45s ease, color .45s ease, border-color .45s ease, fill .45s ease, stroke .45s ease,
+    box-shadow .45s ease !important;
+}
+@media (prefers-reduced-motion: reduce) { html.theming, html.theming * { transition: none !important; } }
 
 * { box-sizing: border-box; }
 // One section per screen: the page's scrolling snaps to them

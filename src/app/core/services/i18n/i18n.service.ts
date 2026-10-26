@@ -37,6 +37,12 @@ export class I18nService {
     return text.replace(/\{(\w+)\}/g, (match, name: string) => (name in args ? String(args[name]) : match));
   }
 
+  /** `lang`'s own name ("Deutsch"), from its file's "@meta". */
+  name(lang: Lang): string {
+    const meta = MESSAGES[lang]['@meta'] as { language?: string } | undefined;
+    return meta?.language ?? lang;
+  }
+
   /** The path of `lang`'s home. */
   path(lang: Lang = this.lang()): string {
     return LANG_PATH[lang];
