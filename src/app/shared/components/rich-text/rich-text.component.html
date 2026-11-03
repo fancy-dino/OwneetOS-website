@@ -1,0 +1,3 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- no spaces between the parts: they would show before commas and full stops -->
+@for (part of parts(); track $index) {@switch (part.kind) {@case ('bold') {<b>{{ part.text }}</b>}@case ('code') {<code>{{ part.text }}</code>}@case ('link') {@if (part.kind === 'link') {<a [href]="part.href">{{ part.text }}</a>}}@default {<ng-container>{{ part.text }}</ng-container>}}}

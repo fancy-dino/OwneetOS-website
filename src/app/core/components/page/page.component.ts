@@ -9,7 +9,7 @@ import { FooterComponent } from '../footer/footer.component';
 /**
  * The frame of a page (guide, FAQ, credits, privacy, contributing, not found): the way back home
  * (unless `back` is false), what goes above the title (`.above`), its title and line
- * (`<page>.title`, `<page>.lede`), its content, the footer. Ordinary scrolling: the
+ * (`<page>.title`, `<page>.lede`, when the page has one), its content, the footer. Ordinary scrolling: the
  * home's snapping sections are only on the home.
  */
 @Component({

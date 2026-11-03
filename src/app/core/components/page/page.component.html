@@ -5,7 +5,9 @@
   }
   <ng-content select=".above" />
   <h1 class="disp">{{ i18n.t(page() + '.title') }}</h1>
-  <p class="lede">{{ i18n.t(page() + '.lede') }}</p>
+  @if (i18n.has(page() + '.lede')) {
+    <p class="lede">{{ i18n.t(page() + '.lede') }}</p>
+  }
   <ng-content />
 </div>
 <app-footer />

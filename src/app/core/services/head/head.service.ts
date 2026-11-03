@@ -27,7 +27,9 @@ export class HeadService {
   show(page: Page): void {
     const t = (key: string, args = {}) => this.i18n.t(key, args);
     const title = page === 'home' ? t('meta.title') : t('meta.page', { page: t(page + '.title') });
-    const description = page === 'home' ? t('meta.description') : t(page + '.lede');
+    // a page's description: its own (`<page>.description`), or the line under its title
+    const description = page === 'home' ? t('meta.description')
+      : this.i18n.has(page + '.description') ? t(page + '.description') : t(page + '.lede');
     this.title.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
 

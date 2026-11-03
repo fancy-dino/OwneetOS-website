@@ -18,5 +18,7 @@ export const ISSUES_URL = `${REPO_URL}/issues`;
 export const CREDITS_URL = `${REPO_URL}/blob/main/CREDITS.md`;
 /** The translators' guide. */
 export const TRANSLATING_URL = `${REPO_URL}/blob/main/docs/translating.md`;
+/** The project's public signing key (its public half only), a file of this site: the guide's check of the ISO. */
+export const PUBLIC_KEY_FILE = 'owneetos.asc';
 /** GitHub's privacy statement (the site is hosted on GitHub Pages). */
 export const GITHUB_PRIVACY_URL = 'https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement';

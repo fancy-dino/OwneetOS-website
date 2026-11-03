@@ -53,6 +53,29 @@ describe('AppComponent', () => {
     expect(authors).toEqual(['Marco De Franco', 'Daniele De Padova']);
   });
 
+  it('shows the guide: its parts, the requirements side by side, the keys, no e-mail address', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/it/guide');
+    const page = harness.routeNativeElement!;
+    expect(page.querySelector('.lede')).toBeNull();
+    expect([...page.querySelectorAll('.toc li')].length).toBe(9);
+    expect(page.querySelector('#req h2')?.textContent).toContain('Requisiti');
+    expect([...page.querySelectorAll('.req h3')].map((h) => h.textContent?.trim())).toEqual(['Minimi', 'Consigliati']);
+    expect(page.querySelectorAll('.req p').length).toBe(14);
+    expect(page.querySelectorAll('.keys tbody tr').length).toBe(9);
+    expect(page.querySelector('a[href="owneetos.asc"]')?.textContent).toBe('la nostra chiave pubblica');
+    expect(page.querySelector('#download')?.textContent).toContain('Scarica OwneetOS in alto a destra');
+    expect(page.textContent).not.toContain('@');
+    expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toContain('Come installare OwneetOS');
+  });
+
+  it('has every text of the guide in every language', () => {
+    const guide = Object.keys(english).filter((key) => key.startsWith('guide.'));
+    for (const messages of Object.values(OTHERS)) {
+      expect(guide.filter((key) => !(key in messages))).toEqual([]);
+    }
+  });
+
   it('shows the not-found page for a wrong address, in the language the address names', async () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/it/nowhere');

@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+b { color: var(--fg); font-weight: 500; }
+code {
+  font-family: ui-monospace, monospace; font-size: .88em; background: var(--raised); color: var(--fg);
+  padding: 1px 6px; border-radius: 6px; overflow-wrap: anywhere;
+}
+a { color: var(--accent); }

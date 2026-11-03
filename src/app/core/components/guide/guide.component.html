@@ -1,9 +1,96 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <app-page page="guide">
-  <ol class="steps">
-    @for (step of steps; track step) {
-      <li><h3>{{ i18n.t('guide.' + step + '.title') }}</h3><p>{{ i18n.t('guide.' + step + '.text') }}</p></li>
-    }
-  </ol>
-  <p class="note">{{ i18n.t('guide.note') }}</p>
+  <nav class="toc" [attr.aria-label]="t('contents')">
+    <b>{{ t('contents') }}</b>
+    <ol>
+      @for (section of sections; track section.id) {
+        <li><a [routerLink]="[]" [fragment]="section.id">{{ t('sec.' + section.id) }}</a></li>
+      }
+    </ol>
+  </nav>
+
+  @for (section of sections; track section.id; let i = $index) {
+    <section class="part" [id]="section.id">
+      <h2><span class="num">{{ number(section.id, i) }}</span>{{ t('sec.' + section.id) }}</h2>
+      <ng-container [ngTemplateOutlet]="blocksTpl" [ngTemplateOutletContext]="{ $implicit: section.blocks }" />
+    </section>
+  }
 </app-page>
+
+<ng-template #blocksTpl let-blocks>
+  @for (block of blocks; track $index) {
+    @switch (block.kind) {
+      @case ('p') { <p><app-rich-text [text]="t(block.text)" [links]="links" /></p> }
+      @case ('warn') { <p class="warn"><app-rich-text [text]="t(block.text)" [links]="links" /></p> }
+      @case ('small') { <p class="small"><app-rich-text [text]="t(block.text)" [links]="links" /></p> }
+      @case ('list') {
+        <ul>@for (item of block.items; track item) { <li><app-rich-text [text]="t(item)" [links]="links" /></li> }</ul>
+      }
+      @case ('steps') {
+        <div class="check">
+          <h3>{{ t(block.title) }}</h3>
+          <ol>
+            @for (step of block.steps; track step.text) {
+              <li><app-rich-text [text]="t(step.text)" [links]="links" />
+                @if (step.sub) {
+                  <ul>@for (s of step.sub; track s) { <li><app-rich-text [text]="t(s)" [links]="links" /></li> }</ul>
+                }
+              </li>
+            }
+          </ol>
+        </div>
+      }
+      @case ('details') {
+        <details>
+          <summary>{{ t(block.summary) }}</summary>
+          <ng-container [ngTemplateOutlet]="blocksTpl" [ngTemplateOutletContext]="{ $implicit: block.blocks }" />
+        </details>
+      }
+      @case ('pictures') {
+        <div class="pics">
+          @for (name of block.names; track name) {
+            <figure>
+              <a [href]="'guide-pictures/' + name + '.webp'" target="_blank">
+                <img [src]="'guide-pictures/' + name + '.webp'" [alt]="t('pic.' + name)" loading="lazy" width="1280" height="720">
+              </a>
+              <figcaption>{{ t('pic.' + name) }}</figcaption>
+            </figure>
+          }
+        </div>
+      }
+      @case ('drawing') { <app-guide-drawing [drawing]="block.drawing" [bootMenu]="t('draw.boot')" /> }
+      @case ('requirements') {
+        <div class="req" role="table">
+          <h3 role="columnheader">{{ t('req.min') }}</h3>
+          <h3 role="columnheader">{{ t('req.rec') }}</h3>
+          @for (row of rows; track row) {
+            <p role="cell"><b>{{ t('req.' + row + '.label') }}:</b> {{ t('req.' + row + '.min') }}</p>
+            <p role="cell"><b>{{ t('req.' + row + '.label') }}:</b> {{ t('req.' + row + '.rec') }}</p>
+          }
+        </div>
+      }
+      @case ('keys') {
+        <div class="keys">
+          <table>
+            <thead><tr><th>{{ t('keys.maker') }}</th><th>{{ t('keys.boot') }}</th><th>{{ t('keys.firmware') }}</th></tr></thead>
+            <tbody>
+              @for (maker of makers; track maker.id) {
+                <tr><td>{{ maker.name }}</td><td>{{ t('keys.' + maker.id + '.boot') }}</td><td>{{ t('keys.' + maker.id + '.firmware') }}</td></tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+      @case ('help') {
+        <div class="faq">
+          @for (n of range(block.count); track n) {
+            <details>
+              <summary>{{ t('help.' + n + '.q') }}</summary>
+              <p><app-rich-text [text]="t('help.' + n + '.a')" [links]="links" /></p>
+            </details>
+          }
+        </div>
+      }
+    }
+  }
+</ng-template>

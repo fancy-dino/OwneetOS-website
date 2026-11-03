@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Our own drawings for the guide, in the palette's colours.
+:host { display: block; margin: 4px 0 16px; max-width: 520px; }
+figure { margin: 0; }
+svg { width: 100%; height: auto; display: block; }
+.d-surface { fill: var(--surface); stroke: var(--line); stroke-width: 2; }
+.d-raised { fill: var(--raised); }
+.d-line { fill: none; stroke: var(--line); stroke-width: 2; }
+.d-accent { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.d-fill { fill: var(--muted); }
+.d-pick { fill: var(--accent); }
+.d-big { fill: var(--fg); font: 600 26px var(--text); }
+.d-text { fill: var(--fg); font: 400 15px var(--text); }
+.d-small { fill: var(--muted); font: 400 14px var(--text); }
+.d-pick-text { fill: var(--on-accent); font: 500 15px var(--text); }
