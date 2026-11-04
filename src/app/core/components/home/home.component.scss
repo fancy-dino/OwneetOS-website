@@ -19,12 +19,7 @@
 // Where we are: one dot per section, on the right
 .dots {
   position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 15; display: grid; gap: 12px;
-  a {
-    position: relative; width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block;
-    transition: transform .2s ease, background .2s ease;
-    // a target easy to press around the small dot, up to the next dots
-    &::before { content: ''; position: absolute; inset: -6px -14px; }
-  }
+  a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: transform .2s ease, background .2s ease; }
   a[aria-current='true'] { background: var(--accent); transform: scale(1.35); }
 }
 
