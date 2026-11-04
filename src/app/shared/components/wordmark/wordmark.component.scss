@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 :host { display: inline-flex; height: 30px; }
-svg { height: 100%; width: auto; display: block; }
+// the outlines reach the viewBox's edges: never clip them on a fractional pixel
+svg { height: 100%; width: auto; display: block; overflow: visible; }
 path { fill: var(--fg); }
 path.accent { fill: var(--accent); }
