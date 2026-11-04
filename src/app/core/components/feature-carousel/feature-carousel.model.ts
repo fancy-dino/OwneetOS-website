@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-/** A feature of the carousel: its icon and the key of its texts (feature.<key>.title / .text). */
+/** A slide of the carousel: the key of its sentence (slide.<key>) and its picture (home-pictures/<picture>.webp). */
 export interface Feature {
-  readonly icon: string;
   readonly key: string;
+  readonly picture: string;
 }

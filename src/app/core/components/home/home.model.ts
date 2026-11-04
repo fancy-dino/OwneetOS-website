@@ -6,13 +6,7 @@ export interface SectionLink {
   readonly label: string;
 }
 
-/** A system requirement: the keys of its figure (64-bit, 4 GB, ...) and of what it is. */
-export interface Requirement {
-  readonly value: string;
-  readonly label: string;
-}
-
-/** A line of "Free, open, yours": its icon and the key of its text. */
+/** A line of "Own it!": its icon and the key of its text. */
 export interface Fact {
   readonly icon: string;
   readonly label: string;

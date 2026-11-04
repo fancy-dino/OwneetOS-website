@@ -6,13 +6,8 @@
     <ul id="menu" [class.open]="menuOpen()">
       @for (link of links; track link.label) {
         <li>
-          @if (link.page) {
-            <a [routerLink]="i18n.pagePath(link.page)" (click)="menuOpen.set(false)"
-              [attr.aria-current]="here(link) ? 'true' : null">{{ i18n.t(link.label) }}</a>
-          } @else {
-            <a [routerLink]="i18n.path()" [fragment]="link.section" (click)="menuOpen.set(false)"
-              [attr.aria-current]="here(link) ? 'true' : null">{{ i18n.t(link.label) }}</a>
-          }
+          <a [routerLink]="i18n.path()" [fragment]="link.section" (click)="menuOpen.set(false)"
+            [attr.aria-current]="here(link) ? 'true' : null">{{ i18n.t(link.label) }}</a>
         </li>
       }
     </ul>

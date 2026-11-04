@@ -1,0 +1,23 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<ul class="moves">
+  @for (move of moves; track move.key; let i = $index) {
+    <li>
+      <button class="move" type="button" [attr.aria-current]="current() === i" (click)="choose(i)">
+        <span class="glyphs">
+          @for (glyph of move.glyphs; track $index) {
+            <span class="glyph" [class.pill]="glyph.pill">
+              @if (glyph.icon) { <app-icon [name]="glyph.icon" /> } @else { {{ i18n.t(glyph.label!) }} }
+            </span>
+          }
+        </span>
+        <span>{{ i18n.t('play.move.' + move.key) }}</span>
+      </button>
+    </li>
+  }
+</ul>
+<!-- the screen of the chosen move, which its sentence describes (no alt) -->
+<div class="screens">
+  @for (move of moves; track move.key; let i = $index) {
+    <img class="shot" [class.on]="current() === i" [src]="'home-pictures/' + move.picture + '.webp'" alt="" width="1280" height="720" />
+  }
+</div>

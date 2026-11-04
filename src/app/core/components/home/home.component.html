@@ -7,53 +7,15 @@
 </nav>
 
 <section class="snap" id="home">
-  <div class="wrap hero">
-    <div class="text">
-      <p class="kicker">{{ i18n.t('hero.kicker') }}</p>
-      <h1 class="disp">{{ i18n.t('hero.title') }}</h1>
-      <p class="lede">{{ i18n.t('hero.lede') }}</p>
-      <div class="ctas">
-        <a class="btn primary" [routerLink]="home()" fragment="download">{{ i18n.t('hero.download') }}</a>
-        <a class="btn ghost" [routerLink]="home()" fragment="features">{{ i18n.t('hero.features') }}</a>
-      </div>
-    </div>
-    <app-console-screen />
-  </div>
-</section>
-
-<section class="snap" id="features">
   <div class="wrap">
-    <div class="head"><h2 class="disp">{{ i18n.t('features.title') }}</h2><p>{{ i18n.t('features.lede') }}</p></div>
     <app-feature-carousel />
+    <p class="made"><a [routerLink]="i18n.pagePath('credits')">{{ i18n.t('home.made') }}</a></p>
   </div>
 </section>
 
-<section class="snap" id="requirements">
+<section class="snap" id="plug">
   <div class="wrap">
-    <div class="head"><h2 class="disp">{{ i18n.t('requirements.title') }}</h2><p>{{ i18n.t('requirements.lede') }}</p></div>
-    <div class="figures">
-      @for (item of requirements; track item.label) {
-        <div class="figure"><b>{{ i18n.t(item.value) }}</b><span>{{ i18n.t(item.label) }}</span></div>
-      }
-    </div>
-    <p class="more"><a [routerLink]="i18n.pagePath('guide')">{{ i18n.t('requirements.more') }}</a></p>
-  </div>
-</section>
-
-<section class="snap" id="open">
-  <div class="wrap">
-    <div class="head"><h2 class="disp">{{ i18n.t('open.title') }}</h2><p>{{ i18n.t('open.lede') }}</p></div>
-    <div class="facts">
-      @for (fact of facts; track fact.label) {
-        <div class="fact"><span class="icon"><app-icon [name]="fact.icon" /></span><b>{{ i18n.t(fact.label) }}</b></div>
-      }
-    </div>
-  </div>
-</section>
-
-<section class="snap" id="info">
-  <div class="wrap">
-    <div class="head"><h2 class="disp">{{ i18n.t('info.title') }}</h2><p>{{ i18n.t('info.lede') }}</p></div>
+    <div class="head"><h2 class="disp">{{ i18n.t('nav.plug') }}</h2><p>{{ i18n.t('plug.lede') }}</p></div>
     <div class="infos">
       <a class="info" [routerLink]="i18n.pagePath('guide')">
         <span class="icon"><app-icon name="book-open" /></span><b>{{ i18n.t('info.guide') }}</b><span>{{ i18n.t('info.guide.text') }}</span>
@@ -61,6 +23,24 @@
       <a class="info" [routerLink]="i18n.pagePath('faq')">
         <span class="icon"><app-icon name="circle-help" /></span><b>{{ i18n.t('info.faq') }}</b><span>{{ i18n.t('info.faq.text') }}</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="snap" id="play">
+  <div class="wrap">
+    <div class="head"><h2 class="disp">{{ i18n.t('nav.play') }}</h2><p>{{ i18n.t('play.lede') }}</p></div>
+    <app-play-tour />
+  </div>
+</section>
+
+<section class="snap" id="own">
+  <div class="wrap">
+    <div class="head"><h2 class="disp">{{ i18n.t('nav.own') }}</h2><p>{{ i18n.t('own.lede') }}</p></div>
+    <div class="facts">
+      @for (fact of facts; track fact.label) {
+        <div class="fact"><span class="icon"><app-icon [name]="fact.icon" /></span><b>{{ i18n.t(fact.label) }}</b></div>
+      }
     </div>
   </div>
 </section>

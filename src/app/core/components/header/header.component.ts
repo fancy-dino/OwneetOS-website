@@ -10,9 +10,9 @@ import { WordmarkComponent } from '../../../shared/components/wordmark/wordmark.
 import { HeaderLink } from './header.model';
 
 /**
- * The site's header: logo, the home's sections and the credits, the languages (a drop-down menu:
- * the same page in another language), the light / dark switch, "Get OwneetOS"; a Menu button below
- * 1100 px. The languages close with Escape or a click elsewhere.
+ * The site's header: the logo (leading to Home), the slogan's three sections, the languages (a
+ * drop-down menu: the same page in another language), the light / dark switch, "Get OwneetOS"; a Menu
+ * button below 820 px. The languages close with Escape or a click elsewhere.
  */
 @Component({
   selector: 'app-header',
@@ -30,20 +30,16 @@ export class HeaderComponent {
   protected readonly theme = inject(ThemeService);
 
   protected readonly links: readonly HeaderLink[] = [
-    { section: 'features', label: 'nav.features' },
-    { section: 'requirements', label: 'nav.requirements' },
-    { section: 'open', label: 'nav.open' },
-    { section: 'info', label: 'nav.info' },
-    { page: 'credits', label: 'nav.credits' },
-    { section: 'download', label: 'nav.download' },
+    { section: 'plug', label: 'nav.plug' },
+    { section: 'play', label: 'nav.play' },
+    { section: 'own', label: 'nav.own' },
   ];
   protected readonly menuOpen = signal(false);
   protected readonly langOpen = signal(false);
 
-  /** Whether the link is where the visitor is: the section on screen on the home, or the page. */
+  /** Whether the link is where the visitor is: the section on screen on the home. */
   protected here(link: HeaderLink): boolean {
-    const page = this.sections.page();
-    return link.page ? page === link.page : page === 'home' && this.sections.current() === link.section;
+    return this.sections.page() === 'home' && this.sections.current() === link.section;
   }
 
   /** A click outside the languages closes them. */

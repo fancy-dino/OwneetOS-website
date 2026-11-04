@@ -1,8 +1,12 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
-<ng-template #card let-feature>
-  <div class="icon"><app-icon [name]="feature.icon" /></div>
-  <h3>{{ i18n.t('feature.' + feature.key + '.title') }}</h3>
-  <p>{{ i18n.t('feature.' + feature.key + '.text') }}</p>
+<!-- a slide: one sentence beside one screen of the console, which that sentence describes (no alt) -->
+<ng-template #card let-feature let-heading="heading">
+  @if (heading) {
+    <h1 class="disp say">{{ i18n.t('slide.' + feature.key) }}</h1>
+  } @else {
+    <p class="disp say">{{ i18n.t('slide.' + feature.key) }}</p>
+  }
+  <img class="shot" [src]="'home-pictures/' + feature.picture + '.webp'" alt="" width="1280" height="720" />
 </ng-template>
 
 <div class="track" #track tabindex="0" role="region" aria-roledescription="carousel" [attr.aria-label]="i18n.t('nav.features')"
@@ -13,7 +17,7 @@
   @for (feature of features; track feature.key; let i = $index) {
     <div class="slide" role="group" aria-roledescription="slide" [attr.aria-current]="current() === i"
       [attr.aria-label]="i18n.t('features.card', { n: i + 1, total: features.length })">
-      <ng-container *ngTemplateOutlet="card; context: { $implicit: feature }" />
+      <ng-container *ngTemplateOutlet="card; context: { $implicit: feature, heading: i === 0 }" />
     </div>
   }
   <div class="slide" aria-hidden="true">

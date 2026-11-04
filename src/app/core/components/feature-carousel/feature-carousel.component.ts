@@ -3,14 +3,15 @@ import { NgTemplateOutlet } from '@angular/common';
 import { Component, DOCUMENT, DestroyRef, ElementRef, afterNextRender, inject, signal, viewChild } from '@angular/core';
 import { I18nService } from '../../services/i18n/i18n.service';
 import { IconComponent } from '../../../shared/components/icon/icon.component';
+import { introLeft } from '../intro/intro.data';
 import { Feature } from './feature-carousel.model';
 
-/** Every AUTOPLAY ms the next feature comes in by itself. */
+/** Every AUTOPLAY ms the next slide comes in by itself. */
 const AUTOPLAY = 5000;
 
 /**
- * The features, one card at a time (the next one half a screen away), moved by the arrows, the
- * dots, a swipe, or left / right when the strip has focus. It loops: the strip holds a copy of
+ * The home's carousel, one sentence beside one screen of the console, a slide at a time (the next one
+ * half a screen away), moved by the arrows, the dots, a swipe, or left / right when the strip has focus. It loops: the strip holds a copy of
  * the last card before the first and of the first after the last; once it stops on a copy, it
  * jumps (instantly, unseen) to the card it copies. It plays by itself, and stops only while the
  * pointer is on it (or it has focus from the keyboard) and while it or the page is not on screen.
@@ -30,14 +31,13 @@ const AUTOPLAY = 5000;
 export class FeatureCarouselComponent {
   protected readonly i18n = inject(I18nService);
   protected readonly features: readonly Feature[] = [
-    { icon: 'gamepad-2', key: 'controller' },
-    { icon: 'library-big', key: 'library' },
-    { icon: 'hard-drive', key: 'disk' },
-    { icon: 'monitor-play', key: 'media' },
-    { icon: 'gamepad', key: 'controllers' },
-    { icon: 'history', key: 'updates' },
-    { icon: 'palette', key: 'style' },
-    { icon: 'feather', key: 'light' },
+    { key: 'home', picture: 'home' },
+    { key: 'controller', picture: 'controls' },
+    { key: 'library', picture: 'library' },
+    { key: 'disk', picture: 'disk' },
+    { key: 'media', picture: 'home-apps' },
+    { key: 'updates', picture: 'versions' },
+    { key: 'style', picture: 'palettes' },
   ];
   protected readonly current = signal(0);
 
@@ -48,6 +48,7 @@ export class FeatureCarouselComponent {
   private paused = false;
   private onScreen = false;
   private timer: ReturnType<typeof setInterval> | undefined;
+  private start: ReturnType<typeof setTimeout> | undefined;
   private settleTimer: ReturnType<typeof setTimeout> | undefined;
 
   constructor() {
@@ -67,6 +68,7 @@ export class FeatureCarouselComponent {
         observer.disconnect();
         this.document.removeEventListener('visibilitychange', visibility);
         clearInterval(this.timer);
+        clearTimeout(this.start);
         clearTimeout(this.settleTimer);
       });
     });
@@ -148,9 +150,13 @@ export class FeatureCarouselComponent {
 
   private restart(): void {
     clearInterval(this.timer);
+    clearTimeout(this.start);
     this.timer = undefined;
-    if (!this.paused && this.onScreen && !this.document.hidden) {
-      this.timer = setInterval(() => this.go(this.current() + 1, false), AUTOPLAY);
+    const view = this.document.defaultView;
+    if (view && !this.paused && this.onScreen && !this.document.hidden) {
+      this.start = setTimeout(() => {
+        this.timer = setInterval(() => this.go(this.current() + 1, false), AUTOPLAY);
+      }, introLeft(view));
     }
   }
 

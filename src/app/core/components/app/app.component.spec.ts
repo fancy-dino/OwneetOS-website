@@ -29,10 +29,10 @@ describe('AppComponent', () => {
   it('shows the English home at / and the Italian one at /it', async () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/');
-    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Turn your PC into a game console.');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Turn your PC into a game console, with a lightweight OS.');
     expect(document.documentElement.lang).toBe('en');
     await harness.navigateByUrl('/it');
-    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Trasforma il tuo PC in una console.');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Trasforma il tuo PC in una console, con un sistema leggero.');
     expect(document.documentElement.lang).toBe('it');
   });
 
@@ -101,6 +101,21 @@ describe('AppComponent', () => {
     expect(document.head.querySelector('link[rel="canonical"], link[hreflang]')).toBeNull();
   });
 
+  it('shows the five sections of the home, the slogan in the header, the credits under the carousel', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/it');
+    const home = harness.routeNativeElement!;
+    expect([...home.querySelectorAll('section[id]')].map((s) => s.id)).toEqual(['home', 'plug', 'play', 'own', 'download']);
+    expect(home.querySelectorAll('#home .slide:not([aria-hidden]) img').length).toBe(7);
+    expect(home.querySelector('#home .made a')?.getAttribute('href')).toBe('/it/credits');
+    expect(home.querySelectorAll('#play .move').length).toBe(4);
+    expect(home.querySelectorAll('#play .glyph').length).toBe(5);
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const header = fixture.nativeElement as HTMLElement;
+    expect([...header.querySelectorAll('#menu a')].map((a) => a.textContent?.trim())).toEqual(['Plug it.', 'Play it.', 'Own it!']);
+  });
+
   it('offers the languages in a menu, each in its own name, and switches the theme', async () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/fr');
@@ -120,13 +135,15 @@ describe('AppComponent', () => {
 
   it('keeps the slogan in English in every language', () => {
     for (const messages of Object.values(OTHERS)) {
-      expect(messages['hero.kicker']).toBe(english['hero.kicker']);
+      for (const key of ['hero.kicker', 'nav.plug', 'nav.play', 'nav.own'] as const) {
+        expect(messages[key]).toBe(english[key]);
+      }
     }
   });
 
   it('shows the pages in German, French and Spanish, and their wrong addresses too', async () => {
     const harness = await RouterTestingHarness.create();
-    for (const [url, heading, lang] of [['/de', 'Mach deinen PC zur Spielkonsole.', 'de'], ['/fr/guide', 'Installer OwneetOS', 'fr'],
+    for (const [url, heading, lang] of [['/de', 'Mach deinen PC zur Spielkonsole, mit einem schlanken System.', 'de'], ['/fr/guide', 'Installer OwneetOS', 'fr'],
       ['/es/faq', 'Preguntas', 'es'], ['/es/nowhere', 'Esta página no existe', 'es']]) {
       await harness.navigateByUrl(url);
       expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(heading);

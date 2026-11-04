@@ -5,19 +5,20 @@ import { I18nService } from '../../services/i18n/i18n.service';
 import { NoticeService } from '../../services/notice/notice.service';
 import { SectionsService } from '../../services/sections/sections.service';
 import { IconComponent } from '../../../shared/components/icon/icon.component';
-import { ConsoleScreenComponent } from '../console-screen/console-screen.component';
 import { FeatureCarouselComponent } from '../feature-carousel/feature-carousel.component';
 import { FooterComponent } from '../footer/footer.component';
-import { Fact, Requirement, SectionLink } from './home.model';
+import { PlayTourComponent } from '../play-tour/play-tour.component';
+import { Fact, SectionLink } from './home.model';
 
 /**
- * The home: one page whose sections each fill the screen, the scrolling snapping from one to the
- * next (step 7.8, approved demo design/demos/7.8-website-home.html of the OwneetOS repository).
- * The address follows the section on screen (#features, #requirements, ...).
+ * The home: one page whose five sections each fill the screen, the scrolling snapping from one to the
+ * next (step 7.8m, approved demo design/demos/7.8m-website-home.html of the OwneetOS repository):
+ * Home, then the slogan's three (Plug it., Play it., Own it!), then Download.
+ * The address follows the section on screen (#plug, #play, ...).
  */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, IconComponent, ConsoleScreenComponent, FeatureCarouselComponent, FooterComponent],
+  imports: [RouterLink, IconComponent, FeatureCarouselComponent, FooterComponent, PlayTourComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -31,24 +32,16 @@ export class HomeComponent {
   protected readonly home = computed(() => this.i18n.path());
   protected readonly sectionLinks: readonly SectionLink[] = [
     { id: 'home', label: 'nav.home' },
-    { id: 'features', label: 'nav.features' },
-    { id: 'requirements', label: 'nav.requirements' },
-    { id: 'open', label: 'nav.open' },
-    { id: 'info', label: 'nav.info' },
+    { id: 'plug', label: 'nav.plug' },
+    { id: 'play', label: 'nav.play' },
+    { id: 'own', label: 'nav.own' },
     { id: 'download', label: 'nav.download' },
   ];
-  protected readonly requirements: readonly Requirement[] = [
-    { value: 'requirements.cpu.value', label: 'requirements.cpu' },
-    { value: 'requirements.firmware.value', label: 'requirements.firmware' },
-    { value: 'requirements.ram.value', label: 'requirements.ram' },
-    { value: 'requirements.disk.value', label: 'requirements.disk' },
-    { value: 'requirements.graphics.value', label: 'requirements.graphics' },
-  ];
   protected readonly facts: readonly Fact[] = [
-    { icon: 'code-xml', label: 'open.free' },
-    { icon: 'shield-check', label: 'open.telemetry' },
-    { icon: 'wifi-off', label: 'open.offline' },
-    { icon: 'users', label: 'open.together' },
+    { icon: 'code-xml', label: 'own.free' },
+    { icon: 'shield-check', label: 'own.telemetry' },
+    { icon: 'globe-off', label: 'own.updates' },
+    { icon: 'user-group', label: 'own.community' },
   ];
 
   constructor() {

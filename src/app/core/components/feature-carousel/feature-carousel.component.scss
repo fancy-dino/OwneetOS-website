@@ -1,24 +1,23 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// The strip spans the whole screen; at rest only the middle card is on screen (the next one is
-// half a screen away), and while they slide the cards come in and go out at the screen's edges.
-:host { display: block; margin: 0 calc(50% - 50vw); --card: min(600px, 84vw); }
+// The strip spans the whole screen; at rest only the middle slide is on screen (the next one is
+// half a screen away), and while they slide they come in and go out at the screen's edges.
+:host { display: block; margin: 0 calc(50% - 50vw); --card: min(1112px, 88vw); }
 .track {
   position: relative; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-  scrollbar-width: none; padding: 8px calc(50vw - var(--card) / 2); gap: calc(50vw - var(--card) / 2);
+  scrollbar-width: none; padding: 8px calc(50vw - var(--card) / 2) 28px; gap: calc(50vw - var(--card) / 2);
   &::-webkit-scrollbar { display: none; }
 }
 .slide {
-  flex: 0 0 var(--card); scroll-snap-align: center; background: var(--surface); border: 1px solid var(--line);
-  border-radius: 28px; padding: 44px 40px; display: grid; justify-items: center; text-align: center; gap: 14px;
+  flex: 0 0 var(--card); scroll-snap-align: center; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+  gap: 56px; align-items: center;
 }
-.icon {
-  width: 84px; height: 84px; border-radius: 24px; display: grid; place-items: center;
-  background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent);
-  app-icon { width: 44px; height: 44px; }
+.say { margin: 0; font-size: clamp(32px, 4.3vw, 56px); }
+// on a low window the picture shrinks, so that the section still fits the screen
+.shot {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 16px; border: 1px solid var(--line);
+  justify-self: end; max-width: calc((100svh - 310px) * 16 / 9);
 }
-h3 { font-family: var(--display); font-weight: 800; font-size: 30px; margin: 6px 0 0; letter-spacing: -0.01em; }
-p { margin: 0; color: var(--muted); font-size: 17px; max-width: 24em; }
-.controls { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 22px; }
+.controls { display: flex; justify-content: center; align-items: center; gap: 18px; }
 .arrow {
   width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface);
   cursor: pointer; display: grid; place-items: center;
@@ -29,5 +28,8 @@ p { margin: 0; color: var(--muted); font-size: 17px; max-width: 24em; }
   button { width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; background: var(--line); cursor: pointer; }
   button[aria-current='true'] { background: var(--accent); width: 24px; border-radius: 999px; }
 }
-@media (max-width: 600px) { .slide { padding: 32px 22px; } }
+@media (max-width: 960px) {
+  .slide { grid-template-columns: minmax(0, 1fr); gap: 24px; text-align: center; }
+  .shot { justify-self: center; }
+}
 @media (prefers-reduced-motion: reduce) { .track { scroll-behavior: auto; } }
