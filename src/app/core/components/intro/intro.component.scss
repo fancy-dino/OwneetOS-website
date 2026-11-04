@@ -10,12 +10,13 @@ $out: .4s;
   position: fixed; inset: 0; z-index: 100; background: var(--bg); display: grid; place-items: center;
   animation: intro-away $out ease ($fade + 2 * $beat + $hold) forwards;
 }
-.in { --w: min(76vw, 720px); display: grid; justify-items: center; }
-// sizes follow the logo's width, as in the logo demo (the logo 900 of a 1600-wide screen)
-// the logo's height from its viewBox (3968.9 x 975), its width then follows
-.logo { height: calc(var(--w) * 975 / 3968.9); opacity: 0; animation: intro-in $fade cubic-bezier(.33, 1, .68, 1) forwards; }
+.in { --w: min(76vw, 800px, 105svh); display: grid; justify-items: center; }
+// sizes follow the word's width, as in the logo demo (the word 800 of a 1600-wide screen, the slogan
+// 40 and as far from the word as the symbol looks, 58); on a low window they shrink to fit
+// the logo's height from its viewBox (3361.8 x 2034.5), its width then follows
+.logo { height: calc(var(--w) * 2034.5 / 3361.8); opacity: 0; animation: intro-in $fade cubic-bezier(.33, 1, .68, 1) forwards; }
 .words {
-  display: flex; gap: .3em; margin: calc(var(--w) * .01) 0 0; font-size: calc(var(--w) * .044); color: var(--muted);
+  display: flex; gap: .3em; margin: calc(var(--w) * .068) 0 0; font-size: calc(var(--w) * .05); line-height: 1; color: var(--muted);
   // laid out at once and hidden: each word appears in its place, the line never moves
   span { visibility: hidden; animation: intro-word 0s steps(1) forwards; }
   span:nth-child(1) { animation-delay: $fade; }

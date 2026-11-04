@@ -4,8 +4,9 @@ import { I18nService } from '../../services/i18n/i18n.service';
 import { WordmarkComponent } from '../../../shared/components/wordmark/wordmark.component';
 
 /**
- * The start-up animation, when the site opens (the website variant of the logo demo,
- * design/demos/logo-gamepad-o.html of the OwneetOS repository): the logo from transparent over
+ * The start-up animation, when the site opens (the website's variant in the logo demo,
+ * design/demos/7.6-logo.html of the OwneetOS repository): the logo, its symbol above the word,
+ * from transparent over
  * 2 s, then the slogan's words 0.5 s apart, each at once; 0.8 s after the last one it fades
  * away and the site shows. CSS only (intro.component.scss), so the prerendered pages play it
  * before any script runs; skipped for visitors who asked for reduced motion.

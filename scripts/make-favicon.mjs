@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Makes the site's icons in public/ (step 7.8e, approved demo design/demos/7.8e-website-favicon.html
-// of the OwneetOS repository): the gamepad "O" of the logo (wordmark.data.ts) in the accent colour
+// of the OwneetOS repository): the symbol of the logo (wordmark.data.ts) in the accent colour
 // of the site's palettes (src/styles.scss), never colours of its own.
 //   favicon.svg           the tab's icon; Dusk, or Daylight when the device is light (as the site)
 //   favicon.ico           16 and 32 px for browsers without SVG icons, in Dusk

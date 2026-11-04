@@ -1,7 +1,9 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
-<svg [attr.viewBox]="viewBox" role="img" aria-label="OwneetOS">
-  @for (path of paths; track $index) {
-    <path [attr.d]="path.d" [class.accent]="path.accent" [attr.transform]="path.transform"
-      [attr.fill-rule]="path.evenodd ? 'evenodd' : null" />
-  }
+<svg [attr.viewBox]="layout().viewBox" role="img" aria-label="OwneetOS">
+  <path class="accent" fill-rule="evenodd" [attr.d]="symbol.d" [attr.transform]="layout().symbol" />
+  <g [attr.transform]="layout().word">
+    @for (letter of letters; track $index) {
+      <path [attr.d]="letter.d" [class.accent]="letter.accent" />
+    }
+  </g>
 </svg>

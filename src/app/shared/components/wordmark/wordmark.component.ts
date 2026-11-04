@@ -1,14 +1,20 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import { Component } from '@angular/core';
-import { WORDMARK_PATHS, WORDMARK_VIEWBOX } from './wordmark.data';
+import { Component, computed, input } from '@angular/core';
+import { WORDMARK_LAYOUTS, WORDMARK_LETTERS, WORDMARK_SYMBOL } from './wordmark.data';
+import { WordmarkLayoutName } from './wordmark.model';
 
-/** The OwneetOS logo at the host's height: the gamepad "O" and "OS" in the accent colour, "wneet" in the text colour. */
+/**
+ * The OwneetOS logo at the host's height: the symbol and "OS" in the accent colour, "Owneet" in the
+ * text colour; the symbol on the left of the word, or above it (`layout`).
+ */
 @Component({
   selector: 'app-wordmark',
   templateUrl: './wordmark.component.html',
   styleUrl: './wordmark.component.scss',
 })
 export class WordmarkComponent {
-  protected readonly viewBox = WORDMARK_VIEWBOX;
-  protected readonly paths = WORDMARK_PATHS;
+  readonly layoutName = input<WordmarkLayoutName>('left', { alias: 'layout' });
+  protected readonly layout = computed(() => WORDMARK_LAYOUTS[this.layoutName()]);
+  protected readonly symbol = WORDMARK_SYMBOL;
+  protected readonly letters = WORDMARK_LETTERS;
 }

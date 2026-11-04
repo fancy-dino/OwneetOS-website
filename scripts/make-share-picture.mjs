@@ -12,10 +12,13 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const wordmark = readFileSync('src/app/shared/components/wordmark/wordmark.data.ts', 'utf8');
-const viewBox = /WORDMARK_VIEWBOX = '([^']+)'/.exec(wordmark)[1];
-const paths = [...wordmark.matchAll(/\{ accent: (true|false)(, evenodd: true)?, transform: '([^']+)', d: '([^']+)' \}/g)]
-  .map(([, accent, evenodd, transform, d]) =>
-    `<path d="${d}" transform="${transform}"${accent === 'true' ? ' class="accent"' : ''}${evenodd ? ' fill-rule="evenodd"' : ''}/>`);
+// the symbol above the word, as on the full screen
+const above = /above: \{ viewBox: '([^']+)', symbol: '([^']+)', word: '([^']+)' \}/.exec(wordmark);
+const [, viewBox, symbolAt, wordAt] = above;
+const symbol = /accent: true, evenodd: true, d: '([^']+)'/.exec(wordmark)[1];
+const letters = [...wordmark.matchAll(/\{ accent: (true|false), d: '([^']+)' \}/g)]
+  .map(([, accent, d]) => `<path d="${d}"${accent === 'true' ? ' class="accent"' : ''}/>`);
+const paths = [`<path class="accent" fill-rule="evenodd" d="${symbol}" transform="${symbolAt}"/>`, `<g transform="${wordAt}">${letters.join('')}</g>`];
 const dusk = readFileSync('src/styles.scss', 'utf8').split('@media (prefers-color-scheme: light)')[0];
 const token = (name) => new RegExp(`--${name}: (#[0-9a-f]{6})`).exec(dusk)[1];
 const slogan = JSON.parse(readFileSync('src/i18n/en.json', 'utf8'))['hero.kicker'];
@@ -25,8 +28,8 @@ mkdirSync(work, { recursive: true });
 writeFileSync(`${work}/picture.html`, `<!doctype html><meta charset="utf-8"><style>
 @font-face { font-family: Lexend; src: url('${resolve('public/fonts/Lexend-Regular.woff2')}'); }
 html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: ${token('bg')}; }
-body { display: grid; place-content: center; justify-items: center; gap: 20px; }
-svg { width: 580px; display: block; }
+body { display: grid; place-content: center; justify-items: center; gap: 38px; }
+svg { width: 560px; display: block; }
 path { fill: ${token('fg')}; } path.accent { fill: ${token('accent')}; }
 p { margin: 0; font: 34px Lexend; letter-spacing: .01em; color: ${token('muted')}; }
 </style><svg viewBox="${viewBox}">${paths.join('')}</svg><p>${slogan}</p>`);
