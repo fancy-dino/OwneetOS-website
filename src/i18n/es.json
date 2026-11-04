@@ -234,7 +234,7 @@
   "faq.4.q": "¿Funcionarán mis juegos de Steam?",
   "faq.4.a": "La mayoría, también los de Windows. Los juegos cuyo antitrampas necesita Secure Boot, no.",
   "faq.5.q": "¿Puedo conservar Windows?",
-  "faq.5.a": "Todavía no: OwneetOS usa todo el disco. La instalación junto a Windows llegará más adelante.",
+  "faq.5.a": "No: OwneetOS usa todo el disco. Actualmente, el arranque dual no está soportado.",
   "faq.6.q": "¿Puedo ver películas y escuchar música?",
   "faq.6.a": "Sí: tus servicios de streaming y tus propios archivos, con el mando.",
   "faq.7.q": "¿Y si una actualización sale mal?",

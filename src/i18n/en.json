@@ -234,7 +234,7 @@
   "faq.4.q": "Will my Steam games run?",
   "faq.4.a": "Most of them, Windows games too. Games whose anti-cheat needs Secure Boot do not.",
   "faq.5.q": "Can I keep Windows?",
-  "faq.5.a": "Not yet: OwneetOS uses the whole disk. Installing next to Windows comes later.",
+  "faq.5.a": "No: OwneetOS uses the whole disk. Dual boot is currently not supported.",
   "faq.6.q": "Can I watch films and listen to music?",
   "faq.6.a": "Yes: your streaming services and your own files, with the controller.",
   "faq.7.q": "What if an update goes wrong?",

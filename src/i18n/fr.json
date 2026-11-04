@@ -234,7 +234,7 @@
   "faq.4.q": "Mes jeux Steam fonctionneront-ils ?",
   "faq.4.a": "La plupart, y compris les jeux Windows. Les jeux dont l’anti-triche exige Secure Boot, non.",
   "faq.5.q": "Puis-je garder Windows ?",
-  "faq.5.a": "Pas encore : OwneetOS utilise tout le disque. L’installation à côté de Windows viendra plus tard.",
+  "faq.5.a": "Non : OwneetOS utilise tout le disque. Le dual boot n’est actuellement pas pris en charge.",
   "faq.6.q": "Puis-je regarder des films et écouter de la musique ?",
   "faq.6.a": "Oui : vos services de streaming et vos propres fichiers, avec la manette.",
   "faq.7.q": "Et si une mise à jour se passe mal ?",

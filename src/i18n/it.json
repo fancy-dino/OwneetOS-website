@@ -234,7 +234,7 @@
   "faq.4.q": "I miei giochi Steam funzionano?",
   "faq.4.a": "Quasi tutti, anche quelli per Windows. Non funzionano i giochi il cui anti-cheat richiede Secure Boot.",
   "faq.5.q": "Posso tenere Windows?",
-  "faq.5.a": "Non ancora: OwneetOS usa tutto il disco. L’installazione accanto a Windows arriverà più avanti.",
+  "faq.5.a": "No: OwneetOS usa tutto il disco. Attualmente, il dual boot non è supportato.",
   "faq.6.q": "Posso guardare film e ascoltare musica?",
   "faq.6.a": "Sì: i tuoi servizi di streaming e i tuoi file, con il controller.",
   "faq.7.q": "E se un aggiornamento va storto?",
