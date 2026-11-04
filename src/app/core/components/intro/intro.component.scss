@@ -17,13 +17,14 @@ $out: .4s;
 .logo { height: calc(var(--w) * 2034.5 / 3361.8); opacity: 0; animation: intro-in $fade cubic-bezier(.33, 1, .68, 1) forwards; }
 .words {
   display: flex; gap: .3em; margin: calc(var(--w) * .068) 0 0; font-size: calc(var(--w) * .05); line-height: 1; color: var(--muted);
-  // laid out at once and hidden: each word appears in its place, the line never moves
-  span { visibility: hidden; animation: intro-word 0s steps(1) forwards; }
+  // laid out at once and transparent: each word appears in its place, the line never moves. Not with
+  // `visibility`: a word left `visible` would outlive the host's `hidden` and keep taking clicks
+  span { opacity: 0; animation: intro-word 0s steps(1) forwards; }
   span:nth-child(1) { animation-delay: $fade; }
   span:nth-child(2) { animation-delay: $fade + $beat; }
   span:nth-child(3) { animation-delay: $fade + 2 * $beat; }
 }
 @keyframes intro-in { to { opacity: 1; } }
-@keyframes intro-word { to { visibility: visible; } }
+@keyframes intro-word { to { opacity: 1; } }
 @keyframes intro-away { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { :host { display: none; } }
