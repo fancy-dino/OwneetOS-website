@@ -11,7 +11,7 @@ const AUTOPLAY = 5000;
 /**
  * "Play it.": a short tour of the controller (not all of it: the quick menu's tutorial has the rest),
  * four moves with their buttons beside the console's screen, which follows the chosen one (approved
- * demo design/demos/7.8m-website-home.html of the OwneetOS repository). The moves take turns by
+ * demo design/demos/7.8n-website-home.html of the OwneetOS repository). The moves take turns by
  * themselves, and stop only while the pointer is on them (or they have focus from the keyboard) and
  * while they or the page are not on screen.
  */

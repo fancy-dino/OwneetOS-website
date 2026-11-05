@@ -12,7 +12,7 @@ import { Fact, SectionLink } from './home.model';
 
 /**
  * The home: one page whose five sections each fill the screen, the scrolling snapping from one to the
- * next (step 7.8m, approved demo design/demos/7.8m-website-home.html of the OwneetOS repository):
+ * next (step 7.8n, approved demo design/demos/7.8n-website-home.html of the OwneetOS repository):
  * Home, then the slogan's three (Plug it., Play it., Own it!), then Download.
  * The address follows the section on screen (#plug, #play, ...).
  */
