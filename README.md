@@ -47,10 +47,10 @@ passes the one GitHub gives (`--define`, and `SITE_URL` for `sitemap.mjs`).
 ```text
 src/i18n/                     the texts, one JSON file per language (en, it, de, fr, es)
 src/app/core/components/      the site's components: app (the root), intro (the start-up animation),
-                              header, footer, page (a page's frame), home (with console-screen and
-                              feature-carousel), guide, faq, credits, privacy, contribute,
-                              not-found (any wrong address; built into 404.html by
-                              scripts/not-found-page.mjs)
+                              header, footer, page (a page's frame), home (its sections, with
+                              feature-carousel and play-tour), guide (with guide-drawing, its own
+                              drawings), faq, credits, privacy, contribute, not-found (any wrong
+                              address; built into 404.html by scripts/not-found-page.mjs)
 public/                       files served as they are: the fonts; the icons (favicon.svg,
                               favicon.ico, apple-touch-icon.png) and the sharing picture
                               (share-picture.png) made from the logo and the palettes by
@@ -58,7 +58,7 @@ public/                       files served as they are: the fonts; the icons (fa
                               (this one with Chromium): run them again when either changes
 scripts/                      also not-found-page.mjs and sitemap.mjs, run after ng build
 src/app/core/services/        app-wide services (i18n, head, theme, sections, notice)
-src/app/shared/components/    components used in several places (icon, wordmark)
+src/app/shared/components/    components used in several places (icon, rich-text, wordmark)
 src/app/shared/links/         the addresses the site links to
 ```
 
