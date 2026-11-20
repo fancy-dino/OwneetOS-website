@@ -151,7 +151,7 @@
   "guide.start.secureboot": "**Secure Boot: aus.** Oft unter Security, Boot oder Authentication. Manche PCs lassen es erst ändern, nachdem ein Firmware-Passwort (Supervisor) gesetzt wurde.",
   "guide.start.csm": "**Legacy oder CSM: aus**, damit der PC in UEFI startet.",
   "guide.start.save": "Speichern und beenden, oft mit F10.",
-  "guide.start.anticheat": "Mit ausgeschaltetem Secure Boot laufen einige Windows-Spiele mit Anti-Cheat (z. B. Battlefield 6, Valorant) nicht: Sie brauchen Secure Boot und laufen nicht unter OwneetOS.",
+  "guide.start.anticheat": "Mit ausgeschaltetem Secure Boot laufen einige Windows-Spiele mit Anti-Cheat (z. B. Battlefield 6) nicht: Sie brauchen Secure Boot und laufen nicht unter OwneetOS.",
   "guide.try.text": "Der Stick startet OwneetOS so, wie es ist, ohne Installation: Schau dich um, probiere den Controller und das Netzwerk aus. Auf die Festplatten des PCs wird nichts geschrieben, und beim Ausschalten bleibt nichts erhalten.",
   "guide.pic.live-home": "Vom Stick gestartet: Der Streifen oben installiert es.",
   "guide.install.text": "Wähle **OwneetOS installieren** auf der Startseite (oder unter Einstellungen → System) und folge den Bildschirmen: keine Tastatur, keine Maus.",

@@ -151,7 +151,7 @@
   "guide.start.secureboot": "**Secure Boot: disattivato.** Spesso è in Security, Boot o Authentication. Alcuni PC lo lasciano cambiare solo dopo aver impostato una password del firmware (supervisor).",
   "guide.start.csm": "**Legacy o CSM: disattivato**, così il PC parte in UEFI.",
   "guide.start.save": "Salva ed esci, spesso con F10.",
-  "guide.start.anticheat": "Con Secure Boot disattivato, alcuni giochi Windows con anti-cheat (per esempio Battlefield 6, Valorant) non funzionano: richiedono Secure Boot, e su OwneetOS non girano.",
+  "guide.start.anticheat": "Con Secure Boot disattivato, alcuni giochi Windows con anti-cheat (per esempio Battlefield 6) non funzionano: richiedono Secure Boot, e su OwneetOS non girano.",
   "guide.try.text": "La chiavetta avvia OwneetOS così com’è, senza installarlo: dai un’occhiata, prova il controller e la rete. Sui dischi del PC non viene scritto niente, e allo spegnimento non resta niente.",
   "guide.pic.live-home": "Avviata dalla chiavetta: la striscia in alto la installa.",
   "guide.install.text": "Scegli **Installa OwneetOS** nella Home (o in Impostazioni → Sistema) e segui le schermate: niente tastiera, niente mouse.",

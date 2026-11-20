@@ -151,7 +151,7 @@
   "guide.start.secureboot": "**Secure Boot : désactivé.** Souvent dans Security, Boot ou Authentication. Certains PC ne le laissent changer qu’après avoir défini un mot de passe du firmware (supervisor).",
   "guide.start.csm": "**Legacy ou CSM : désactivé**, pour que le PC démarre en UEFI.",
   "guide.start.save": "Enregistrez et quittez, souvent avec F10.",
-  "guide.start.anticheat": "Avec Secure Boot désactivé, certains jeux Windows avec anti-triche (par ex. Battlefield 6, Valorant) ne fonctionnent pas : ils exigent Secure Boot et ne fonctionnent pas sous OwneetOS.",
+  "guide.start.anticheat": "Avec Secure Boot désactivé, certains jeux Windows avec anti-triche (par ex. Battlefield 6) ne fonctionnent pas : ils exigent Secure Boot et ne fonctionnent pas sous OwneetOS.",
   "guide.try.text": "La clé démarre OwneetOS tel quel, sans l’installer : faites le tour, essayez la manette et le réseau. Rien n’est écrit sur les disques du PC, et rien n’est gardé à l’extinction.",
   "guide.pic.live-home": "Démarré depuis la clé : la bande en haut l’installe.",
   "guide.install.text": "Choisissez **Installer OwneetOS** sur l’accueil (ou dans Paramètres → Système) et suivez les écrans : ni clavier, ni souris.",

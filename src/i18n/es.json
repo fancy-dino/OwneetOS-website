@@ -151,7 +151,7 @@
   "guide.start.secureboot": "**Secure Boot: desactivado.** A menudo en Security, Boot o Authentication. Algunos PC solo dejan cambiarlo después de poner una contraseña del firmware (supervisor).",
   "guide.start.csm": "**Legacy o CSM: desactivado**, para que el PC arranque en UEFI.",
   "guide.start.save": "Guarda y sal, a menudo con F10.",
-  "guide.start.anticheat": "Con Secure Boot desactivado, algunos juegos de Windows con antitrampas (p. ej. Battlefield 6, Valorant) no funcionan: necesitan Secure Boot y no funcionan en OwneetOS.",
+  "guide.start.anticheat": "Con Secure Boot desactivado, algunos juegos de Windows con antitrampas (p. ej. Battlefield 6) no funcionan: necesitan Secure Boot y no funcionan en OwneetOS.",
   "guide.try.text": "La memoria arranca OwneetOS tal cual, sin instalarlo: echa un vistazo, prueba el mando y la red. No se escribe nada en los discos del PC, y al apagarlo no queda nada.",
   "guide.pic.live-home": "Arrancado desde la memoria: la franja de arriba lo instala.",
   "guide.install.text": "Elige **Instalar OwneetOS** en Inicio (o en Ajustes → Sistema) y sigue las pantallas: sin teclado ni ratón.",
